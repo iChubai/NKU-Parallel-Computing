@@ -69,8 +69,8 @@ for opt in O0 O1 O2 O3 Ofast; do
     collect_task2_data $opt
 done
 
-# 运行矩阵性能分析脚本
+# 运行矩阵性能分析脚本，确保使用英文
 echo "运行矩阵性能分析..."
-python3 plot_matrix_performance.py
+LANG=en_US.UTF-8 python3 plot_matrix_performance.py
 
 echo "数据收集完成。结果保存在 results/ 目录中。" 

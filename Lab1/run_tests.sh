@@ -1,110 +1,110 @@
-#!/bin/bash
+# #!/bin/bash
 
-echo "========================================================"
-echo "       并行计算实验测试脚本 - 不同优化级别比较"
-echo "========================================================"
+# echo "========================================================"
+# echo "       并行计算实验测试脚本 - 不同优化级别比较"
+# echo "========================================================"
 
-# 创建结果目录
-mkdir -p results
-mkdir -p profiling_results
+# # 创建结果目录
+# mkdir -p results
+# mkdir -p profiling_results
 
-# 检查perf是否安装
-if ! command -v perf &> /dev/null; then
-    echo "警告：'perf'工具未安装，无法进行性能分析。"
-    echo "请使用 'sudo apt install linux-tools-common linux-tools-generic' 安装。"
-    HAS_PERF=false
-else
-    HAS_PERF=true
-fi
+# # 检查perf是否安装
+# if ! command -v perf &> /dev/null; then
+#     echo "警告：'perf'工具未安装，无法进行性能分析。"
+#     echo "请使用 'sudo apt install linux-tools-common linux-tools-generic' 安装。"
+#     HAS_PERF=false
+# else
+#     HAS_PERF=true
+# fi
 
-# 函数：生成2的幂次大小的测试数据
-# 使用时: generate_powers_of_two 10 20 将生成从2^10到2^20的所有2的幂次
-function generate_powers_of_two() {
-    local min_power=$1
-    local max_power=$2
-    local sizes=()
+# # 函数：生成2的幂次大小的测试数据
+# # 使用时: generate_powers_of_two 10 20 将生成从2^10到2^20的所有2的幂次
+# function generate_powers_of_two() {
+#     local min_power=$1
+#     local max_power=$2
+#     local sizes=()
     
-    for ((i=min_power; i<=max_power; i++)); do
-        sizes+=($(echo "2^$i" | bc))
-    done
+#     for ((i=min_power; i<=max_power; i++)); do
+#         sizes+=($(echo "2^$i" | bc))
+#     done
     
-    echo "${sizes[@]}"
-}
+#     echo "${sizes[@]}"
+# }
 
-# 任务1：矩阵向量乘法测试
-echo ""
-echo "任务1：矩阵向量乘法 - 不同编译优化级别"
-echo "------------------------------------------------------"
+# # # 任务1：矩阵向量乘法测试
+# # echo ""
+# # echo "任务1：矩阵向量乘法 - 不同编译优化级别"
+# # echo "------------------------------------------------------"
 
-# 编译不同优化级别的版本
-echo "正在编译任务1的不同优化级别版本..."
-g++ -O0 task1.cpp -o task1_O0
-g++ -O1 task1.cpp -o task1_O1
-g++ -O2 task1.cpp -o task1_O2
-g++ -O3 task1.cpp -o task1_O3 -march=native
+# # # 编译不同优化级别的版本
+# # echo "正在编译任务1的不同优化级别版本..."
+# # g++ -O0 task1.cpp -o task1_O0
+# # g++ -O1 task1.cpp -o task1_O1
+# # g++ -O2 task1.cpp -o task1_O2
+# # g++ -O3 task1.cpp -o task1_O3 -march=native
 
-# 运行不同优化级别的版本
-echo ""
-echo "任务1：基本性能测试结果（矩阵大小=1024）"
-echo "------------------------------------------------------"
-for opt_level in 0 1 2 3; do
-    echo "运行 -O$opt_level 优化级别："
-    ./task1_O$opt_level | grep -E "1024|矩阵大小" | head -n 2
-    echo ""
-done
+# # # 运行不同优化级别的版本
+# # echo ""
+# # echo "任务1：基本性能测试结果（矩阵大小=1024）"
+# # echo "------------------------------------------------------"
+# # for opt_level in 0 1 2 3; do
+# #     echo "运行 -O$opt_level 优化级别："
+# #     ./task1_O$opt_level | grep -E "1024|矩阵大小" | head -n 2
+# #     echo ""
+# # done
 
-# Profiling任务1 (仅使用-O3优化)
-if [ "$HAS_PERF" = true ]; then
-    echo ""
-    echo "任务1：性能分析（使用perf工具）"
-    echo "------------------------------------------------------"
-    echo "正在收集性能数据..."
+# # # Profiling任务1 (仅使用-O3优化)
+# # if [ "$HAS_PERF" = true ]; then
+# #     echo ""
+# #     echo "任务1：性能分析（使用perf工具）"
+# #     echo "------------------------------------------------------"
+# #     echo "正在收集性能数据..."
     
-    # CPU周期和分支预测数据
-    perf stat -e cycles,instructions,cache-references,cache-misses,branch-misses ./task1_O3 > /dev/null 2> profiling_results/task1_O3_stat.txt
+# #     # CPU周期和分支预测数据
+# #     perf stat -e cycles,instructions,cache-references,cache-misses,branch-misses ./task1_O3 > /dev/null 2> profiling_results/task1_O3_stat.txt
     
-    # 热点函数分析
-    perf record -g -o profiling_results/task1_O3.data ./task1_O3 > /dev/null 2>&1
-    perf report -i profiling_results/task1_O3.data > profiling_results/task1_O3_report.txt
+# #     # 热点函数分析
+# #     perf record -g -o profiling_results/task1_O3.data ./task1_O3 > /dev/null 2>&1
+# #     perf report -i profiling_results/task1_O3.data > profiling_results/task1_O3_report.txt
     
-    echo "性能分析结果已保存到 profiling_results 目录"
+# #     echo "性能分析结果已保存到 profiling_results 目录"
     
-    # 输出摘要
-    echo ""
-    echo "任务1：性能分析摘要："
-    grep -A 10 "Performance counter stats" profiling_results/task1_O3_stat.txt
-    echo ""
-fi
+# #     # 输出摘要
+# #     echo ""
+# #     echo "任务1：性能分析摘要："
+# #     grep -A 10 "Performance counter stats" profiling_results/task1_O3_stat.txt
+# #     echo ""
+# # fi
 
-# 任务2：向量求和测试
-echo ""
-echo "任务2：向量求和 - 不同编译优化级别"
-echo "------------------------------------------------------"
+# # 任务2：向量求和测试
+# echo ""
+# echo "任务2：向量求和 - 不同编译优化级别"
+# echo "------------------------------------------------------"
 
-# 编译不同优化级别的版本
-echo "正在编译任务2的不同优化级别版本..."
-g++ -O0 task2.cpp -o task2_O0
-g++ -O1 task2.cpp -o task2_O1
-g++ -O2 task2.cpp -o task2_O2
-g++ -O3 task2.cpp -o task2_O3 -march=native
+# # 编译不同优化级别的版本
+# echo "正在编译任务2的不同优化级别版本..."
+# g++ -O0 task2.cpp -o task2_O0
+# g++ -O1 task2.cpp -o task2_O1
+# g++ -O2 task2.cpp -o task2_O2
+# g++ -O3 task2.cpp -o task2_O3 -march=native
 
-# 运行不同优化级别的版本
-echo ""
-echo "任务2：基本性能测试结果（向量大小=1024,2048,4096）"
-echo "------------------------------------------------------"
-for opt_level in 0 1 2 3; do
-    echo "运行 -O$opt_level 优化级别："
-    for size in 1024 2048 4096; do
-        ./task2_O$opt_level | grep -E "^[ ]*$size" | head -n 1
-    done
-    echo ""
-done
+# # 运行不同优化级别的版本
+# echo ""
+# echo "任务2：基本性能测试结果（向量大小=1024,2048,4096）"
+# echo "------------------------------------------------------"
+# for opt_level in 0 1 2 3; do
+#     echo "运行 -O$opt_level 优化级别："
+#     for size in 1024 2048 4096; do
+#         ./task2_O$opt_level | grep -E "^[ ]*$size" | head -n 1
+#     done
+#     echo ""
+# done
 
-# 创建浮点数运算次序测试版本
-echo ""
-echo "任务2：浮点数运算次序测试"
-echo "------------------------------------------------------"
-echo "正在编译启用/禁用浮点数优化的版本..."
+# # 创建浮点数运算次序测试版本
+# echo ""
+# echo "任务2：浮点数运算次序测试"
+# echo "------------------------------------------------------"
+# echo "正在编译启用/禁用浮点数优化的版本..."
 
 # 创建临时测试文件，添加浮点数运算次序测试代码
 cat > task2_fp_test.cpp << 'EOF'
@@ -242,60 +242,60 @@ echo ""
 echo "启用快速浮点数模式结果(-ffast-math)："
 ./task2_fp_test_fastmath
 
-# Profiling任务2 (仅使用-O3优化)
-if [ "$HAS_PERF" = true ]; then
-    echo ""
-    echo "任务2：性能分析（使用perf工具）"
-    echo "------------------------------------------------------"
-    echo "正在收集性能数据..."
+# # Profiling任务2 (仅使用-O3优化)
+# if [ "$HAS_PERF" = true ]; then
+#     echo ""
+#     echo "任务2：性能分析（使用perf工具）"
+#     echo "------------------------------------------------------"
+#     echo "正在收集性能数据..."
     
-    # CPU周期和缓存数据
-    perf stat -e cycles,instructions,cache-references,cache-misses,branch-misses ./task2_O3 > /dev/null 2> profiling_results/task2_O3_stat.txt
+#     # CPU周期和缓存数据
+#     perf stat -e cycles,instructions,cache-references,cache-misses,branch-misses ./task2_O3 > /dev/null 2> profiling_results/task2_O3_stat.txt
     
-    # 热点函数分析
-    perf record -g -o profiling_results/task2_O3.data ./task2_O3 > /dev/null 2>&1
-    perf report -i profiling_results/task2_O3.data > profiling_results/task2_O3_report.txt
+#     # 热点函数分析
+#     perf record -g -o profiling_results/task2_O3.data ./task2_O3 > /dev/null 2>&1
+#     perf report -i profiling_results/task2_O3.data > profiling_results/task2_O3_report.txt
     
-    # 性能分析：比较不同算法的热点函数
-    # 注释掉有问题的部分
-    # echo "比较不同求和算法的性能特性..."
-    # for algo in "naive_sum" "two_way_sum" "four_way_sum" "unrolled_sum" "macro_template_sum"; do
-    #     echo "分析 $algo 算法..."
-    #     perf record -g --call-graph dwarf -e cycles:u -o profiling_results/task2_${algo}.data -- ./task2_O3 > /dev/null 2>&1
-    #     perf report -i profiling_results/task2_${algo}.data --stdio --symbol-filter=${algo} > profiling_results/task2_${algo}_report.txt
-    # done
+#     # 性能分析：比较不同算法的热点函数
+#     # 注释掉有问题的部分
+#     # echo "比较不同求和算法的性能特性..."
+#     # for algo in "naive_sum" "two_way_sum" "four_way_sum" "unrolled_sum" "macro_template_sum"; do
+#     #     echo "分析 $algo 算法..."
+#     #     perf record -g --call-graph dwarf -e cycles:u -o profiling_results/task2_${algo}.data -- ./task2_O3 > /dev/null 2>&1
+#     #     perf report -i profiling_results/task2_${algo}.data --stdio --symbol-filter=${algo} > profiling_results/task2_${algo}_report.txt
+#     # done
     
-    echo "性能分析结果已保存到 profiling_results 目录"
+#     echo "性能分析结果已保存到 profiling_results 目录"
     
-    # 输出摘要
-    echo ""
-    echo "任务2：性能分析摘要："
-    grep -A 10 "Performance counter stats" profiling_results/task2_O3_stat.txt
+#     # 输出摘要
+#     echo ""
+#     echo "任务2：性能分析摘要："
+#     grep -A 10 "Performance counter stats" profiling_results/task2_O3_stat.txt
     
-    # 分析缓存效率
-    echo ""
-    echo "任务2：缓存效率分析："
-    perf stat -e L1-dcache-loads,L1-dcache-load-misses ./task2_O3 > /dev/null 2> profiling_results/task2_O3_cache.txt
-    grep -A 5 "Performance counter stats" profiling_results/task2_O3_cache.txt
+#     # 分析缓存效率
+#     echo ""
+#     echo "任务2：缓存效率分析："
+#     perf stat -e L1-dcache-loads,L1-dcache-load-misses ./task2_O3 > /dev/null 2> profiling_results/task2_O3_cache.txt
+#     grep -A 5 "Performance counter stats" profiling_results/task2_O3_cache.txt
     
-    echo ""
-fi
+#     echo ""
+# fi
 
-# 删除临时文件
-rm -f task2_fp_test.cpp
+# # 删除临时文件
+# rm -f task2_fp_test.cpp
 
-echo ""
-echo "========================================================"
-echo "                 所有测试已完成！"
-echo "========================================================"
-echo "结果摘要："
-echo "- 性能分析报告已保存到 profiling_results/ 目录"
-echo "- 不同优化级别的比较已显示在控制台输出中"
-echo "- 浮点数累加顺序测试结果已显示"
-echo ""
-echo "建议分析："
-echo "1. 比较不同优化级别对性能的影响"
-echo "2. 观察浮点数运算顺序对结果精度的影响"
-echo "3. 根据profiling结果分析热点函数和缓存行为"
-echo "4. 对比指令级并行方法的效率差异"
-echo "========================================================" 
+# echo ""
+# echo "========================================================"
+# echo "                 所有测试已完成！"
+# echo "========================================================"
+# echo "结果摘要："
+# echo "- 性能分析报告已保存到 profiling_results/ 目录"
+# echo "- 不同优化级别的比较已显示在控制台输出中"
+# echo "- 浮点数累加顺序测试结果已显示"
+# echo ""
+# echo "建议分析："
+# echo "1. 比较不同优化级别对性能的影响"
+# echo "2. 观察浮点数运算顺序对结果精度的影响"
+# echo "3. 根据profiling结果分析热点函数和缓存行为"
+# echo "4. 对比指令级并行方法的效率差异"
+# echo "========================================================" 

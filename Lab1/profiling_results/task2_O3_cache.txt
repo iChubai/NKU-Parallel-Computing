@@ -1,0 +1,12 @@
+
+ Performance counter stats for './task2_O3':
+
+       760,700,767      L1-dcache-loads                                                       
+         5,027,436      L1-dcache-load-misses            #    0.66% of all L1-dcache accesses 
+
+       0.742390161 seconds time elapsed
+
+       0.516703000 seconds user
+       0.040936000 seconds sys
+
+

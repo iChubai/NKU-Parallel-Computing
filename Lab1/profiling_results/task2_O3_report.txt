@@ -1,0 +1,763 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 2K of event 'cycles:P'
+# Event count (approx.): 1440342622
+#
+# Children      Self  Command   Shared Object          Symbol                                                                                                                                                                               
+# ........  ........  ........  .....................  .....................................................................................................................................................................................
+#
+    99.65%     0.00%  task2_O3  task2_O3               [.] _start
+            |
+            ---_start
+               __libc_start_main
+               0xe9430cc684c4
+               main
+               |          
+               |--29.53%--unrolled_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+               |--10.21%--four_way_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+               |--9.88%--macro_template_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+                --4.80%--generate_test_data(int)
+                          |          
+                          |--1.23%--0xe9430cce2fc0
+                          |          el0t_64_sync
+                          |          el0t_64_sync_handler
+                          |          el0_da
+                          |          |          
+                          |           --1.09%--do_mem_abort
+                          |                     |          
+                          |                      --1.05%--do_translation_fault
+                          |                                do_page_fault
+                          |                                |          
+                          |                                 --0.94%--handle_mm_fault
+                          |                                           __handle_mm_fault
+                          |                                           |          
+                          |                                            --0.90%--handle_pte_fault
+                          |                                                      do_pte_missing
+                          |                                                      do_anonymous_page
+                          |                                                      |          
+                          |                                                       --0.56%--alloc_anon_folio
+                          |                                                                 vma_alloc_zeroed_movable_folio
+                          |                                                                 vma_alloc_folio
+                          |                                                                 |          
+                          |                                                                  --0.52%--alloc_pages_mpol
+                          |          
+                           --1.12%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+
+    99.65%     0.00%  task2_O3  libc.so.6              [.] __libc_start_main
+            |
+            ---__libc_start_main
+               0xe9430cc684c4
+               main
+               |          
+               |--29.53%--unrolled_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+               |--10.21%--four_way_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+               |--9.88%--macro_template_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+                --4.80%--generate_test_data(int)
+                          |          
+                          |--1.23%--0xe9430cce2fc0
+                          |          el0t_64_sync
+                          |          el0t_64_sync_handler
+                          |          el0_da
+                          |          |          
+                          |           --1.09%--do_mem_abort
+                          |                     |          
+                          |                      --1.05%--do_translation_fault
+                          |                                do_page_fault
+                          |                                |          
+                          |                                 --0.94%--handle_mm_fault
+                          |                                           __handle_mm_fault
+                          |                                           |          
+                          |                                            --0.90%--handle_pte_fault
+                          |                                                      do_pte_missing
+                          |                                                      do_anonymous_page
+                          |                                                      |          
+                          |                                                       --0.56%--alloc_anon_folio
+                          |                                                                 vma_alloc_zeroed_movable_folio
+                          |                                                                 vma_alloc_folio
+                          |                                                                 |          
+                          |                                                                  --0.52%--alloc_pages_mpol
+                          |          
+                           --1.12%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+
+    99.65%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430cc684c4
+            |
+            ---0xe9430cc684c4
+               main
+               |          
+               |--29.53%--unrolled_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+               |--10.21%--four_way_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+               |--9.88%--macro_template_sum(std::vector<double, std::allocator<double> > const&)
+               |          
+                --4.80%--generate_test_data(int)
+                          |          
+                          |--1.23%--0xe9430cce2fc0
+                          |          el0t_64_sync
+                          |          el0t_64_sync_handler
+                          |          el0_da
+                          |          |          
+                          |           --1.09%--do_mem_abort
+                          |                     |          
+                          |                      --1.05%--do_translation_fault
+                          |                                do_page_fault
+                          |                                |          
+                          |                                 --0.94%--handle_mm_fault
+                          |                                           __handle_mm_fault
+                          |                                           |          
+                          |                                            --0.90%--handle_pte_fault
+                          |                                                      do_pte_missing
+                          |                                                      do_anonymous_page
+                          |                                                      |          
+                          |                                                       --0.56%--alloc_anon_folio
+                          |                                                                 vma_alloc_zeroed_movable_folio
+                          |                                                                 vma_alloc_folio
+                          |                                                                 |          
+                          |                                                                  --0.52%--alloc_pages_mpol
+                          |          
+                           --1.12%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+
+    99.65%    44.14%  task2_O3  task2_O3               [.] main
+            |          
+            |--55.51%--main
+            |          |          
+            |          |--29.53%--unrolled_sum(std::vector<double, std::allocator<double> > const&)
+            |          |          
+            |          |--10.21%--four_way_sum(std::vector<double, std::allocator<double> > const&)
+            |          |          
+            |          |--9.88%--macro_template_sum(std::vector<double, std::allocator<double> > const&)
+            |          |          
+            |           --4.80%--generate_test_data(int)
+            |                     |          
+            |                     |--1.23%--0xe9430cce2fc0
+            |                     |          el0t_64_sync
+            |                     |          el0t_64_sync_handler
+            |                     |          el0_da
+            |                     |          |          
+            |                     |           --1.09%--do_mem_abort
+            |                     |                     |          
+            |                     |                      --1.05%--do_translation_fault
+            |                     |                                do_page_fault
+            |                     |                                |          
+            |                     |                                 --0.94%--handle_mm_fault
+            |                     |                                           __handle_mm_fault
+            |                     |                                           |          
+            |                     |                                            --0.90%--handle_pte_fault
+            |                     |                                                      do_pte_missing
+            |                     |                                                      do_anonymous_page
+            |                     |                                                      |          
+            |                     |                                                       --0.56%--alloc_anon_folio
+            |                     |                                                                 vma_alloc_zeroed_movable_folio
+            |                     |                                                                 vma_alloc_folio
+            |                     |                                                                 |          
+            |                     |                                                                  --0.52%--alloc_pages_mpol
+            |                     |          
+            |                      --1.12%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+            |          
+             --44.14%--_start
+                       __libc_start_main
+                       0xe9430cc684c4
+                       main
+
+    29.53%    29.42%  task2_O3  task2_O3               [.] unrolled_sum(std::vector<double, std::allocator<double> > const&)
+            |          
+             --29.42%--_start
+                       __libc_start_main
+                       0xe9430cc684c4
+                       main
+                       unrolled_sum(std::vector<double, std::allocator<double> > const&)
+
+    10.21%    10.21%  task2_O3  task2_O3               [.] four_way_sum(std::vector<double, std::allocator<double> > const&)
+            |
+            ---_start
+               __libc_start_main
+               0xe9430cc684c4
+               main
+               four_way_sum(std::vector<double, std::allocator<double> > const&)
+
+     9.88%     9.81%  task2_O3  task2_O3               [.] macro_template_sum(std::vector<double, std::allocator<double> > const&)
+            |          
+             --9.81%--_start
+                       __libc_start_main
+                       0xe9430cc684c4
+                       main
+                       macro_template_sum(std::vector<double, std::allocator<double> > const&)
+
+     4.80%     2.33%  task2_O3  task2_O3               [.] generate_test_data(int)
+            |          
+            |--2.48%--generate_test_data(int)
+            |          |          
+            |          |--1.23%--0xe9430cce2fc0
+            |          |          el0t_64_sync
+            |          |          el0t_64_sync_handler
+            |          |          el0_da
+            |          |          |          
+            |          |           --1.09%--do_mem_abort
+            |          |                     |          
+            |          |                      --1.05%--do_translation_fault
+            |          |                                do_page_fault
+            |          |                                |          
+            |          |                                 --0.94%--handle_mm_fault
+            |          |                                           __handle_mm_fault
+            |          |                                           |          
+            |          |                                            --0.90%--handle_pte_fault
+            |          |                                                      do_pte_missing
+            |          |                                                      do_anonymous_page
+            |          |                                                      |          
+            |          |                                                       --0.56%--alloc_anon_folio
+            |          |                                                                 vma_alloc_zeroed_movable_folio
+            |          |                                                                 vma_alloc_folio
+            |          |                                                                 |          
+            |          |                                                                  --0.52%--alloc_pages_mpol
+            |          |          
+            |           --1.12%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+            |          
+             --2.33%--_start
+                       __libc_start_main
+                       0xe9430cc684c4
+                       main
+                       generate_test_data(int)
+
+     1.84%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0t_64_sync
+            |
+            ---el0t_64_sync
+               el0t_64_sync_handler
+               |          
+                --1.34%--el0_da
+                          |          
+                           --1.20%--do_mem_abort
+                                     |          
+                                      --1.14%--do_translation_fault
+                                                do_page_fault
+                                                |          
+                                                 --1.03%--handle_mm_fault
+                                                           __handle_mm_fault
+                                                           |          
+                                                            --0.99%--handle_pte_fault
+                                                                      do_pte_missing
+                                                                      do_anonymous_page
+                                                                      |          
+                                                                       --0.60%--alloc_anon_folio
+                                                                                 vma_alloc_zeroed_movable_folio
+                                                                                 vma_alloc_folio
+                                                                                 |          
+                                                                                  --0.56%--alloc_pages_mpol
+                                                                                            |          
+                                                                                             --0.54%--__alloc_pages
+                                                                                                       get_page_from_freelist
+
+     1.84%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0t_64_sync_handler
+            |
+            ---el0t_64_sync_handler
+               |          
+                --1.34%--el0_da
+                          |          
+                           --1.20%--do_mem_abort
+                                     |          
+                                      --1.14%--do_translation_fault
+                                                do_page_fault
+                                                |          
+                                                 --1.03%--handle_mm_fault
+                                                           __handle_mm_fault
+                                                           |          
+                                                            --0.99%--handle_pte_fault
+                                                                      do_pte_missing
+                                                                      do_anonymous_page
+                                                                      |          
+                                                                       --0.60%--alloc_anon_folio
+                                                                                 vma_alloc_zeroed_movable_folio
+                                                                                 vma_alloc_folio
+                                                                                 |          
+                                                                                  --0.56%--alloc_pages_mpol
+                                                                                            |          
+                                                                                             --0.54%--__alloc_pages
+                                                                                                       get_page_from_freelist
+
+     1.34%     0.14%  task2_O3  [kernel.kallsyms]      [k] el0_da
+            |          
+             --1.20%--el0_da
+                       do_mem_abort
+                       |          
+                        --1.14%--do_translation_fault
+                                  do_page_fault
+                                  |          
+                                   --1.03%--handle_mm_fault
+                                             __handle_mm_fault
+                                             |          
+                                              --0.99%--handle_pte_fault
+                                                        do_pte_missing
+                                                        do_anonymous_page
+                                                        |          
+                                                         --0.60%--alloc_anon_folio
+                                                                   vma_alloc_zeroed_movable_folio
+                                                                   vma_alloc_folio
+                                                                   |          
+                                                                    --0.56%--alloc_pages_mpol
+                                                                              |          
+                                                                               --0.54%--__alloc_pages
+                                                                                         get_page_from_freelist
+
+     1.23%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430cce2fc0
+            |
+            ---0xe9430cce2fc0
+               el0t_64_sync
+               el0t_64_sync_handler
+               el0_da
+               |          
+                --1.09%--do_mem_abort
+                          |          
+                           --1.05%--do_translation_fault
+                                     do_page_fault
+                                     |          
+                                      --0.94%--handle_mm_fault
+                                                __handle_mm_fault
+                                                |          
+                                                 --0.90%--handle_pte_fault
+                                                           do_pte_missing
+                                                           do_anonymous_page
+                                                           |          
+                                                            --0.56%--alloc_anon_folio
+                                                                      vma_alloc_zeroed_movable_folio
+                                                                      vma_alloc_folio
+                                                                      |          
+                                                                       --0.52%--alloc_pages_mpol
+
+     1.21%     0.04%  task2_O3  [kernel.kallsyms]      [k] do_mem_abort
+            |          
+             --1.17%--do_mem_abort
+                       |          
+                        --1.15%--do_translation_fault
+                                  do_page_fault
+                                  |          
+                                   --1.04%--handle_mm_fault
+                                             __handle_mm_fault
+                                             |          
+                                              --1.00%--handle_pte_fault
+                                                        do_pte_missing
+                                                        |          
+                                                         --0.99%--do_anonymous_page
+                                                                   |          
+                                                                    --0.60%--alloc_anon_folio
+                                                                              vma_alloc_zeroed_movable_folio
+                                                                              vma_alloc_folio
+                                                                              |          
+                                                                               --0.56%--alloc_pages_mpol
+                                                                                         |          
+                                                                                          --0.54%--__alloc_pages
+                                                                                                    get_page_from_freelist
+
+     1.17%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_page_fault
+            |
+            ---do_page_fault
+               |          
+                --1.06%--handle_mm_fault
+                          __handle_mm_fault
+                          |          
+                           --1.02%--handle_pte_fault
+                                     |          
+                                      --1.00%--do_pte_missing
+                                                |          
+                                                 --0.99%--do_anonymous_page
+                                                           |          
+                                                            --0.60%--alloc_anon_folio
+                                                                      vma_alloc_zeroed_movable_folio
+                                                                      vma_alloc_folio
+                                                                      |          
+                                                                       --0.56%--alloc_pages_mpol
+                                                                                 |          
+                                                                                  --0.54%--__alloc_pages
+                                                                                            get_page_from_freelist
+
+     1.15%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_translation_fault
+            |
+            ---do_translation_fault
+               do_page_fault
+               |          
+                --1.04%--handle_mm_fault
+                          __handle_mm_fault
+                          |          
+                           --1.00%--handle_pte_fault
+                                     do_pte_missing
+                                     |          
+                                      --0.99%--do_anonymous_page
+                                                |          
+                                                 --0.60%--alloc_anon_folio
+                                                           vma_alloc_zeroed_movable_folio
+                                                           vma_alloc_folio
+                                                           |          
+                                                            --0.56%--alloc_pages_mpol
+                                                                      |          
+                                                                       --0.54%--__alloc_pages
+                                                                                 get_page_from_freelist
+
+     1.12%     1.12%  task2_O3  task2_O3               [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+            |
+            ---_start
+               __libc_start_main
+               0xe9430cc684c4
+               main
+               generate_test_data(int)
+               std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+
+     1.06%     0.00%  task2_O3  [kernel.kallsyms]      [k] handle_mm_fault
+            |
+            ---handle_mm_fault
+               __handle_mm_fault
+               |          
+                --1.02%--handle_pte_fault
+                          |          
+                           --1.00%--do_pte_missing
+                                     |          
+                                      --0.99%--do_anonymous_page
+                                                |          
+                                                 --0.60%--alloc_anon_folio
+                                                           vma_alloc_zeroed_movable_folio
+                                                           vma_alloc_folio
+                                                           |          
+                                                            --0.56%--alloc_pages_mpol
+                                                                      |          
+                                                                       --0.54%--__alloc_pages
+                                                                                 get_page_from_freelist
+
+     1.06%     0.04%  task2_O3  [kernel.kallsyms]      [k] __handle_mm_fault
+            |          
+             --1.02%--__handle_mm_fault
+                       handle_pte_fault
+                       |          
+                        --1.00%--do_pte_missing
+                                  |          
+                                   --0.99%--do_anonymous_page
+                                             |          
+                                              --0.60%--alloc_anon_folio
+                                                        vma_alloc_zeroed_movable_folio
+                                                        vma_alloc_folio
+                                                        |          
+                                                         --0.56%--alloc_pages_mpol
+                                                                   |          
+                                                                    --0.54%--__alloc_pages
+                                                                              get_page_from_freelist
+
+     1.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] handle_pte_fault
+            |
+            ---handle_pte_fault
+               |          
+                --1.00%--do_pte_missing
+                          |          
+                           --0.99%--do_anonymous_page
+                                     |          
+                                      --0.60%--alloc_anon_folio
+                                                vma_alloc_zeroed_movable_folio
+                                                vma_alloc_folio
+                                                |          
+                                                 --0.56%--alloc_pages_mpol
+                                                           |          
+                                                            --0.54%--__alloc_pages
+                                                                      get_page_from_freelist
+
+     1.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_pte_missing
+            |
+            ---do_pte_missing
+               |          
+                --0.99%--do_anonymous_page
+                          |          
+                           --0.60%--alloc_anon_folio
+                                     vma_alloc_zeroed_movable_folio
+                                     vma_alloc_folio
+                                     |          
+                                      --0.56%--alloc_pages_mpol
+                                                |          
+                                                 --0.54%--__alloc_pages
+                                                           get_page_from_freelist
+
+     0.99%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_anonymous_page
+            |
+            ---do_anonymous_page
+               |          
+                --0.60%--alloc_anon_folio
+                          vma_alloc_zeroed_movable_folio
+                          vma_alloc_folio
+                          |          
+                           --0.56%--alloc_pages_mpol
+                                     |          
+                                      --0.54%--__alloc_pages
+                                                get_page_from_freelist
+
+     0.60%     0.00%  task2_O3  [kernel.kallsyms]      [k] alloc_anon_folio
+            |
+            ---alloc_anon_folio
+               vma_alloc_zeroed_movable_folio
+               vma_alloc_folio
+               |          
+                --0.56%--alloc_pages_mpol
+                          |          
+                           --0.54%--__alloc_pages
+                                     get_page_from_freelist
+
+     0.60%     0.00%  task2_O3  [kernel.kallsyms]      [k] vma_alloc_zeroed_movable_folio
+            |
+            ---vma_alloc_zeroed_movable_folio
+               vma_alloc_folio
+               |          
+                --0.56%--alloc_pages_mpol
+                          |          
+                           --0.54%--__alloc_pages
+                                     get_page_from_freelist
+
+     0.60%     0.00%  task2_O3  [kernel.kallsyms]      [k] vma_alloc_folio
+            |
+            ---vma_alloc_folio
+               |          
+                --0.56%--alloc_pages_mpol
+                          |          
+                           --0.54%--__alloc_pages
+                                     get_page_from_freelist
+
+     0.56%     0.03%  task2_O3  [kernel.kallsyms]      [k] get_page_from_freelist
+            |          
+             --0.54%--get_page_from_freelist
+
+     0.56%     0.00%  task2_O3  [kernel.kallsyms]      [k] alloc_pages_mpol
+            |
+            ---alloc_pages_mpol
+               |          
+                --0.54%--__alloc_pages
+                          get_page_from_freelist
+
+     0.54%     0.00%  task2_O3  [kernel.kallsyms]      [k] __alloc_pages
+            |
+            ---__alloc_pages
+               get_page_from_freelist
+
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0t_64_irq
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0t_64_irq_handler
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] __el0_irq_handler_common
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0_interrupt
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0_svc
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_el0_svc
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+     0.49%     0.00%  task2_O3  [kernel.kallsyms]      [k] invoke_syscall
+     0.46%     0.46%  task2_O3  [kernel.kallsyms]      [k] __pi_clear_page
+     0.30%     0.24%  task2_O3  [kernel.kallsyms]      [k] zap_pte_range
+     0.30%     0.00%  task2_O3  [kernel.kallsyms]      [k] unmap_vmas
+     0.30%     0.00%  task2_O3  [kernel.kallsyms]      [k] unmap_single_vma.isra.0
+     0.30%     0.00%  task2_O3  [kernel.kallsyms]      [k] unmap_page_range
+     0.30%     0.00%  task2_O3  [kernel.kallsyms]      [k] zap_pmd_range.isra.0
+     0.29%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_notify_resume
+     0.28%     0.00%  task2_O3  libc.so.6              [.] cfree
+     0.28%     0.00%  task2_O3  libc.so.6              [.] __munmap
+     0.28%     0.00%  task2_O3  [kernel.kallsyms]      [k] __arm64_sys_munmap
+     0.28%     0.00%  task2_O3  [kernel.kallsyms]      [k] __vm_munmap
+     0.28%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_vmi_munmap
+     0.28%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_vmi_align_munmap
+     0.28%     0.00%  task2_O3  [kernel.kallsyms]      [k] unmap_region
+     0.24%     0.00%  task2_O3  [kernel.kallsyms]      [k] irq_exit_rcu
+     0.24%     0.11%  task2_O3  [kernel.kallsyms]      [k] handle_softirqs
+     0.24%     0.00%  task2_O3  [kernel.kallsyms]      [k] __irq_exit_rcu
+     0.24%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_softirq_own_stack
+     0.24%     0.00%  task2_O3  [kernel.kallsyms]      [k] call_on_irq_stack
+     0.24%     0.00%  task2_O3  [kernel.kallsyms]      [k] ____do_softirq
+     0.24%     0.00%  task2_O3  [kernel.kallsyms]      [k] __do_softirq
+     0.22%     0.00%  task2_O3  [kernel.kallsyms]      [k] __mem_cgroup_charge
+     0.22%     0.14%  task2_O3  libstdc++.so.6.0.33    [.] std::chrono::_V2::system_clock::now()
+     0.17%     0.14%  task2_O3  [kernel.kallsyms]      [k] finish_task_switch.isra.0
+     0.17%     0.00%  task2_O3  [kernel.kallsyms]      [k] schedule
+     0.17%     0.00%  task2_O3  [kernel.kallsyms]      [k] __schedule
+     0.17%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d147a54
+     0.17%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d143b94
+     0.17%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d142730
+     0.16%     0.00%  task2_O3  libc.so.6              [.] malloc
+     0.13%     0.00%  task2_O3  libstdc++.so.6.0.33    [.] operator new(unsigned long)
+     0.12%     0.00%  task2_O3  [kernel.kallsyms]      [k] __arm64_sys_exit_group
+     0.12%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_group_exit
+     0.12%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_exit
+     0.12%     0.00%  task2_O3  [kernel.kallsyms]      [k] exit_mm
+     0.12%     0.00%  task2_O3  [kernel.kallsyms]      [k] mmput
+     0.12%     0.00%  task2_O3  [kernel.kallsyms]      [k] __mmput
+     0.12%     0.00%  task2_O3  [kernel.kallsyms]      [k] exit_mmap
+     0.12%     0.12%  task2_O3  task2_O3               [.] std::chrono::_V2::system_clock::now()@plt
+     0.11%     0.04%  task2_O3  [kernel.kallsyms]      [k] mem_cgroup_commit_charge
+     0.11%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d1453fc
+     0.10%     0.00%  task2_O3  [kernel.kallsyms]      [k] tlb_finish_mmu
+     0.10%     0.00%  task2_O3  [kernel.kallsyms]      [k] tlb_batch_pages_flush
+     0.10%     0.00%  task2_O3  [kernel.kallsyms]      [k] free_pages_and_swap_cache
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] net_rx_action
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] __napi_poll
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] virtnet_poll
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] napi_complete_done
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] netif_receive_skb_list_internal
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] __netif_receive_skb_list_core
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] ip_list_rcv
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] ip_sublist_rcv
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] ip_sublist_rcv_finish
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] ip_local_deliver
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] ip_local_deliver_finish
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] ip_protocol_deliver_rcu
+     0.09%     0.00%  task2_O3  [kernel.kallsyms]      [k] tcp_v4_rcv
+     0.09%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430ccd5b8c
+     0.08%     0.08%  task2_O3  [vdso]                 [.] 0x00000000000004fc
+     0.08%     0.00%  task2_O3  libc.so.6              [.] clock_gettime
+     0.08%     0.00%  task2_O3  [vdso]                 [.] __kernel_clock_gettime
+     0.08%     0.00%  task2_O3  [vdso]                 [.] 0x0000e9430d16a4fc
+     0.08%     0.08%  task2_O3  task2_O3               [.] FixedSizeSum<256ul>::sum(std::vector<double, std::allocator<double> > const&, unsigned long) [clone .isra.0]
+     0.08%     0.08%  task2_O3  [kernel.kallsyms]      [k] blkcg_maybe_throttle_current
+     0.07%     0.07%  task2_O3  [kernel.kallsyms]      [k] rseq_update_cpu_node_id
+     0.07%     0.00%  task2_O3  [kernel.kallsyms]      [k] __rseq_handle_notify_resume
+     0.07%     0.07%  task2_O3  [kernel.kallsyms]      [k] down_read_trylock
+     0.07%     0.00%  task2_O3  [kernel.kallsyms]      [k] el1h_64_irq
+     0.07%     0.00%  task2_O3  [kernel.kallsyms]      [k] el1h_64_irq_handler
+     0.07%     0.00%  task2_O3  [kernel.kallsyms]      [k] el1_interrupt
+     0.06%     0.06%  task2_O3  [kernel.kallsyms]      [k] free_unref_page_commit
+     0.06%     0.00%  task2_O3  [kernel.kallsyms]      [k] release_pages
+     0.06%     0.02%  task2_O3  [kernel.kallsyms]      [k] folio_remove_rmap_ptes
+     0.06%     0.06%  task2_O3  [kernel.kallsyms]      [k] _raw_spin_unlock_irqrestore
+     0.06%     0.00%  task2_O3  [kernel.kallsyms]      [k] folio_add_lru_vma
+     0.06%     0.00%  task2_O3  [kernel.kallsyms]      [k] folio_add_lru
+     0.06%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d145154
+     0.06%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d12faf4
+     0.06%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] _dl_catch_exception
+     0.06%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d12f59c
+     0.06%     0.06%  task2_O3  ld-linux-aarch64.so.1  [.] 0x000000000000d26c
+     0.06%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d13a307
+     0.06%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d13a26c
+     0.05%     0.05%  task2_O3  [kernel.kallsyms]      [k] __skb_checksum
+     0.05%     0.05%  task2_O3  [kernel.kallsyms]      [k] get_mem_cgroup_from_mm
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] down_write
+     0.04%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430ccd4828
+     0.04%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430ccd3a58
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] _raw_spin_unlock
+     0.04%     0.04%  task2_O3  libc.so.6              [.] 0x0000000000094680
+     0.04%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430ccd4680
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] __mod_memcg_lruvec_state
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] __lruvec_stat_mod_folio
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] __mod_lruvec_state
+     0.04%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430ccd5a98
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] tcp_chrono_stop
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] tcp_v4_do_rcv
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] tcp_rcv_established
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] tcp_ack
+     0.04%     0.00%  task2_O3  task2_O3               [.] double four_way_pure_template_sum<1024ul>(std::vector<double, std::allocator<double> > const&) [clone .isra.0]
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] percpu_ref_get_many
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] free_unref_page_list
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] free_swap_cache
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] percpu_counter_add_batch
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] get_task_policy.part.0
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] get_vma_policy
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] page_counter_try_charge
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] try_charge_memcg
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] lock_vma_under_rcu
+     0.04%     0.00%  task2_O3  task2_O3               [.] FixedSizeSum<512ul>::sum(std::vector<double, std::allocator<double> > const&, unsigned long) [clone .isra.0]
+     0.04%     0.04%  task2_O3  libc.so.6              [.] _IO_do_write
+     0.04%     0.00%  task2_O3  libstdc++.so.6.0.33    [.] std::ostream::flush()
+     0.04%     0.00%  task2_O3  libc.so.6              [.] _IO_fflush
+     0.04%     0.00%  task2_O3  libc.so.6              [.] _IO_file_sync
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] rcu_nocb_unlock_irqrestore
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] rcu_core_si
+     0.04%     0.00%  task2_O3  [kernel.kallsyms]      [k] rcu_core
+     0.04%     0.04%  task2_O3  [kernel.kallsyms]      [k] mas_walk
+     0.04%     0.04%  task2_O3  task2_O3               [.] double pure_template_sum<1024ul>(std::vector<double, std::allocator<double> > const&) [clone .isra.0]
+     0.03%     0.03%  task2_O3  [kernel.kallsyms]      [k] __rmqueue_pcplist
+     0.03%     0.00%  task2_O3  [kernel.kallsyms]      [k] rmqueue
+     0.03%     0.03%  task2_O3  [kernel.kallsyms]      [k] _copy_to_iter
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d147a78
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d131c24
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d131b14
+     0.03%     0.00%  task2_O3  libstdc++.so.6.0.33    [.] 0x0000e9430cea5864
+     0.03%     0.00%  task2_O3  libc.so.6              [.] 0x0000e9430ccd2d6c
+     0.03%     0.00%  task2_O3  [kernel.kallsyms]      [k] __arm64_sys_getrandom
+     0.03%     0.03%  task2_O3  ld-linux-aarch64.so.1  [.] 0x000000000001c0dc
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d13a308
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d136584
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d135d70
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d1359ab
+     0.03%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d1490dc
+     0.02%     0.02%  task2_O3  [kernel.kallsyms]      [k] __rcu_read_lock
+     0.02%     0.02%  task2_O3  [kernel.kallsyms]      [k] ptep_clear_flush
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d1453fb
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d13a1d0
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_wp_page
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] wp_page_copy
+     0.02%     0.02%  task2_O3  ld-linux-aarch64.so.1  [.] 0x000000000001c0ec
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d134ce0
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d137473
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d1490ec
+     0.02%     0.02%  task2_O3  [kernel.kallsyms]      [k] __pte_offset_map_lock
+     0.02%     0.02%  task2_O3  [kernel.kallsyms]      [k] vfs_read
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d135004
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d132028
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d1483c4
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] __arm64_sys_read
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] mprotect_fixup
+     0.02%     0.02%  task2_O3  [kernel.kallsyms]      [k] mas_descend
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d134e30
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d133c37
+     0.02%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d14858c
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] __arm64_sys_mprotect
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_mprotect_pkey.constprop.0
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] vma_modify
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] __split_vma
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] vma_complete
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] mas_store_prealloc
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] mas_wr_store_entry.isra.0
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] mas_wr_bnode
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] mas_split.isra.0
+     0.02%     0.00%  task2_O3  [kernel.kallsyms]      [k] mas_push_data
+     0.01%     0.01%  task2_O3  [kernel.kallsyms]      [k] next_uptodate_folio
+     0.01%     0.00%  task2_O3  ld-linux-aarch64.so.1  [.] 0x0000e9430d147a40
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] el0_ia
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_read_fault
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] filemap_map_pages
+     0.01%     0.00%  task2_O3  [unknown]              [k] 0x0000eb5a716fde0c
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] bprm_execve
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] exec_binprm
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] search_binary_handler
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] load_elf_binary
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] elf_load
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] vm_mmap
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] vm_mmap_pgoff
+     0.01%     0.01%  task2_O3  [kernel.kallsyms]      [k] vma_interval_tree_insert
+     0.01%     0.00%  task2_O3  [unknown]              [k] 0x0000eb5a716fe057
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] load_elf_interp
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] do_mmap
+     0.01%     0.00%  task2_O3  [kernel.kallsyms]      [k] mmap_region
+     0.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] path_noexec
+     0.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] setup_arg_pages
+     0.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] shift_arg_pages
+     0.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] pmd_install
+     0.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] move_page_tables
+     0.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] vma_expand
+     0.00%     0.00%  task2_O3  [kernel.kallsyms]      [k] memset
+     0.00%     0.00%  perf-exe  [unknown]              [k] 0x0000eb5a716fde0c
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0t_64_sync
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0t_64_sync_handler
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0_svc
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] do_el0_svc
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] invoke_syscall
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] bprm_execve
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] exec_binprm
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] search_binary_handler
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] load_elf_binary
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] begin_new_exec
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] _raw_spin_lock_irqsave
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_enable_on_exec
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_exec
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

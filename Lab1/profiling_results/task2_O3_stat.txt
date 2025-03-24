@@ -1,0 +1,15 @@
+
+ Performance counter stats for './task2_O3':
+
+     1,463,147,729      cycles                                                                
+     3,344,883,498      instructions                     #    2.29  insn per cycle            
+       761,197,436      cache-references                                                      
+         5,048,862      cache-misses                     #    0.66% of all cache refs         
+           247,202      branch-misses                                                         
+
+       0.691906508 seconds time elapsed
+
+       0.545733000 seconds user
+       0.059806000 seconds sys
+
+

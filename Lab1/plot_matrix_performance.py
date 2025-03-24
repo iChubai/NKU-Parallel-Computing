@@ -11,14 +11,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-# 设置中文字体支持
-try:
-    plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
-    plt.rcParams['axes.unicode_minus'] = False    # 用来正常显示负号
-except:
-    print("警告: 未能设置中文字体，图表中的中文可能无法正确显示")
-    # 使用默认英文字体
-    plt.rcParams['font.sans-serif'] = ['DejaVu Sans']
+# 设置英文字体支持
+plt.rcParams['font.sans-serif'] = ['DejaVu Sans']  # 使用默认英文字体
+plt.rcParams['axes.unicode_minus'] = True            # 用来正常显示负号
 
 # 创建输出目录
 os.makedirs('results/plots', exist_ok=True)
@@ -42,19 +37,19 @@ colors = ['#4472C4', '#ED7D31', '#A5A5A5', '#FFC000', '#5B9BD5', '#70AD47']
 markers = ['o', 's', '^', 'D', 'x', '+']
 
 def analyze_matrix_performance():
-    """分析矩阵乘法性能并生成图表"""
-    print('分析矩阵乘法性能数据...')
+    """Analyze matrix multiplication performance and generate charts"""
+    print('Analyzing matrix multiplication performance data...')
     
     # 读取CSV结果文件
     csv_file = 'results/matrix_multiplication_results.csv'
     if not os.path.exists(csv_file):
-        print(f"错误: 找不到结果文件 {csv_file}")
+        print(f"Error: Result file {csv_file} not found")
         return
     
     data = pd.read_csv(csv_file)
-    print(f"读取到 {len(data)} 条测试数据")
+    print(f"Read {len(data)} test data")
     
-    # 1. 为每种矩阵类型绘制算法性能对比图
+    # 1. For each matrix type, plot algorithm performance comparison
     matrix_types = data['MatrixType'].unique()
     
     for matrix_type in matrix_types:
@@ -75,9 +70,9 @@ def analyze_matrix_performance():
                     color=colors[i % len(colors)], marker=markers[i % len(markers)],
                     label=alg)
         
-        plt.title(f'{matrix_type}的算法性能比较')
-        plt.xlabel('矩阵大小 (n*n)')
-        plt.ylabel('执行时间 (毫秒)')
+        plt.title(f'Performance Comparison of Algorithms for {matrix_type}')
+        plt.xlabel('Matrix Size (n*n)')
+        plt.ylabel('Execution Time (ms)')
         plt.yscale('log')
         plt.legend()
         plt.grid(True)
@@ -89,7 +84,7 @@ def analyze_matrix_performance():
         plt.savefig(filename.replace('.png', '.pdf'))
         plt.close()
     
-    # 2. 比较分块算法在不同块大小下的性能
+    # 2. Compare block algorithms at different block sizes
     for matrix_type in matrix_types:
         # 选择特定大小的矩阵（如3000x3000）
         target_size = 3000
@@ -107,9 +102,9 @@ def analyze_matrix_performance():
             plt.plot(block_opt_data['BlockSize'], block_opt_data['ExecutionTime(ms)'], 
                      color=colors[1], marker=markers[1], label='优化分块')
             
-            plt.title(f'{matrix_type} 在不同分块大小下的性能 (矩阵大小={target_size})')
-            plt.xlabel('分块大小')
-            plt.ylabel('执行时间 (毫秒)')
+            plt.title(f'Performance of {matrix_type} at Different Block Sizes (Matrix Size={target_size})')
+            plt.xlabel('Block Size')
+            plt.ylabel('Execution Time (ms)')
             plt.grid(True)
             plt.legend()
             plt.tight_layout()
@@ -120,7 +115,7 @@ def analyze_matrix_performance():
             plt.savefig(filename.replace('.png', '.pdf'))
             plt.close()
     
-    # 3. 为每种算法创建热力图，比较不同矩阵类型和大小的性能
+    # 3. Create heatmaps for each algorithm comparing performance across different matrix types and sizes
     algorithms = data['Algorithm'].unique()
     
     for alg in algorithms:
@@ -141,9 +136,9 @@ def analyze_matrix_performance():
             plt.figure(figsize=(12, 8))
             ax = sns.heatmap(pivot_data, annot=True, fmt='.1f', cmap='YlGnBu')
             
-            plt.title(f'{alg} 在不同矩阵类型和大小下的性能热力图')
-            plt.xlabel('矩阵大小')
-            plt.ylabel('矩阵类型')
+            plt.title(f'Performance Heatmap of {alg} Across Different Matrix Types and Sizes')
+            plt.xlabel('Matrix Size')
+            plt.ylabel('Matrix Type')
             plt.tight_layout()
             
             # 保存图表
@@ -152,7 +147,7 @@ def analyze_matrix_performance():
             plt.savefig(filename.replace('.png', '.pdf'))
             plt.close()
     
-    # 4. 比较所有算法在特定矩阵类型和大小下的性能
+    # 4. Compare all algorithms for a specific matrix type and size
     for matrix_type in matrix_types:
         # 选择特定大小的矩阵（3000x3000）
         target_size = 3000
@@ -196,13 +191,13 @@ def analyze_matrix_performance():
         
         # 添加算法标签
         plt.yticks(range(len(sorted_algs)), sorted_algs)
-        plt.xlabel('执行时间 (毫秒)')
-        plt.title(f'{matrix_type} 矩阵大小={target_size} 的算法性能比较')
+        plt.xlabel('Execution Time (ms)')
+        plt.title(f'Performance Comparison of Algorithms for {matrix_type} (Matrix Size={target_size})')
         
         # 添加加速比标注
         for i, (bar, speedup) in enumerate(zip(bars, speedups)):
             plt.text(bar.get_width() + 5, bar.get_y() + bar.get_height()/2, 
-                     f'加速比: {speedup:.2f}x', va='center')
+                     f'Speedup: {speedup:.2f}x', va='center')
         
         plt.tight_layout()
         
@@ -212,20 +207,20 @@ def analyze_matrix_performance():
         plt.savefig(filename.replace('.png', '.pdf'))
         plt.close()
     
-    # 5. 创建加速比热力图
-    # 选择随机矩阵类型，计算所有算法相对于朴素算法的加速比
+    # 5. Create speedup heatmap
+    # Select random matrix type, calculate speedup of all algorithms relative to naive algorithm
     random_data = data[data['MatrixType'] == '随机矩阵'].copy()
     
-    # 创建一个新的DataFrame存储加速比
+    # Create a new DataFrame to store speedup
     speedup_data = []
     
     for size in random_data['Size'].unique():
         size_data = random_data[random_data['Size'] == size]
         
-        # 获取朴素算法的时间作为基准
+        # Get naive algorithm time as baseline
         naive_time = size_data[(size_data['Algorithm'] == 'naive') & (size_data['BlockSize'] == 0)]['ExecutionTime(ms)'].values[0]
         
-        # 计算其他算法的加速比
+        # Calculate speedup of other algorithms
         for _, row in size_data.iterrows():
             if row['Algorithm'] != 'naive' or row['BlockSize'] != 0:
                 speedup = naive_time / row['ExecutionTime(ms)']
@@ -243,7 +238,7 @@ def analyze_matrix_performance():
     
     speedup_df = pd.DataFrame(speedup_data)
     
-    # 创建数据透视表
+    # Create pivot table
     if len(speedup_df) > 0:
         pivot_speedup = speedup_df.pivot_table(
             values='Speedup', 
@@ -254,18 +249,18 @@ def analyze_matrix_performance():
         plt.figure(figsize=(12, 10))
         ax = sns.heatmap(pivot_speedup, annot=True, fmt='.2f', cmap='YlOrRd')
         
-        plt.title('各算法在不同矩阵大小下的加速比热力图 (基准: 朴素算法)')
-        plt.xlabel('矩阵大小')
-        plt.ylabel('算法')
+        plt.title('Speedup Heatmap of All Algorithms Relative to Naive Algorithm')
+        plt.xlabel('Matrix Size')
+        plt.ylabel('Algorithm')
         plt.tight_layout()
         
-        # 保存图表
+        # Save chart
         filename = 'results/plots/speedup_heatmap.png'
         plt.savefig(filename)
         plt.savefig(filename.replace('.png', '.pdf'))
         plt.close()
     
-    print('矩阵乘法性能分析完成，图表已保存至 results/plots 目录')
+    print('Matrix multiplication performance analysis completed, charts saved to results/plots directory')
 
 if __name__ == "__main__":
     analyze_matrix_performance() 
