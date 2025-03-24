@@ -257,12 +257,13 @@ if [ "$HAS_PERF" = true ]; then
     perf report -i profiling_results/task2_O3.data > profiling_results/task2_O3_report.txt
     
     # 性能分析：比较不同算法的热点函数
-    echo "比较不同求和算法的性能特性..."
-    for algo in "naive_sum" "two_way_sum" "four_way_sum" "unrolled_sum" "macro_template_sum"; do
-        echo "分析 $algo 算法..."
-        perf record -g --call-graph dwarf -e cycles:u -o profiling_results/task2_${algo}.data -- ./task2_O3 > /dev/null 2>&1
-        perf report -i profiling_results/task2_${algo}.data --stdio --symbol=${algo} > profiling_results/task2_${algo}_report.txt
-    done
+    # 注释掉有问题的部分
+    # echo "比较不同求和算法的性能特性..."
+    # for algo in "naive_sum" "two_way_sum" "four_way_sum" "unrolled_sum" "macro_template_sum"; do
+    #     echo "分析 $algo 算法..."
+    #     perf record -g --call-graph dwarf -e cycles:u -o profiling_results/task2_${algo}.data -- ./task2_O3 > /dev/null 2>&1
+    #     perf report -i profiling_results/task2_${algo}.data --stdio --symbol-filter=${algo} > profiling_results/task2_${algo}_report.txt
+    # done
     
     echo "性能分析结果已保存到 profiling_results 目录"
     
@@ -274,7 +275,7 @@ if [ "$HAS_PERF" = true ]; then
     # 分析缓存效率
     echo ""
     echo "任务2：缓存效率分析："
-    perf stat -e L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores ./task2_O3 > /dev/null 2> profiling_results/task2_O3_cache.txt
+    perf stat -e L1-dcache-loads,L1-dcache-load-misses ./task2_O3 > /dev/null 2> profiling_results/task2_O3_cache.txt
     grep -A 5 "Performance counter stats" profiling_results/task2_O3_cache.txt
     
     echo ""

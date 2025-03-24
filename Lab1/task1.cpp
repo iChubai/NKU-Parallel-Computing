@@ -71,10 +71,10 @@ int main() {
     vector<int> sizes = {100, 500, 1000, 2000, 3000};
     
     cout << "矩阵向量乘法性能测试" << endl;
-    cout << "----------------------------------------" << endl;
-    cout << setw(10) << "矩阵大小" << setw(15) << "平凡算法(ms)" << setw(15) << "优化算法(ms)" 
-         << setw(15) << "加速比" << endl;
-    cout << "----------------------------------------" << endl;
+    cout << "----------------------------------------------------------------" << endl;
+    cout << setw(12) << "矩阵大小" << setw(18) << "平凡算法(ms)" << setw(18) << "优化算法(ms)" 
+         << setw(16) << "加速比" << endl;
+    cout << "----------------------------------------------------------------" << endl;
     
     for(int n : sizes) {
         vector<vector<double>> matrix;
@@ -95,23 +95,23 @@ int main() {
         
         double speedup = duration1.count() / duration2.count();
         
-        cout << setw(10) << n 
-             << setw(15) << fixed << setprecision(3) << duration1.count()
-             << setw(15) << duration2.count()
-             << setw(15) << speedup
+        cout << setw(12) << n 
+             << setw(18) << fixed << setprecision(3) << duration1.count()
+             << setw(18) << duration2.count()
+             << setw(16) << speedup
              << (results_match ? "" : " (结果不匹配!)")
              << endl;
     }
     
     cout << "\n\n不同问题规模的性能测试（多次测试平均）" << endl;
-    cout << "----------------------------------------" << endl;
+    cout << "----------------------------------------------------------------" << endl;
     
     const int repetitions = 10; // 重复次数
     vector<int> detailed_sizes = {128, 256, 512, 768, 1024, 1536, 2048, 2560, 3072};
     
-    cout << setw(10) << "矩阵大小" << setw(15) << "平凡算法(ms)" << setw(15) << "优化算法(ms)" 
-         << setw(15) << "加速比" << endl;
-    cout << "----------------------------------------" << endl;
+    cout << setw(12) << "矩阵大小" << setw(18) << "平凡算法(ms)" << setw(18) << "优化算法(ms)" 
+         << setw(16) << "加速比" << endl;
+    cout << "----------------------------------------------------------------" << endl;
     
     for(int n : detailed_sizes) {
         // 生成测试数据
@@ -143,10 +143,10 @@ int main() {
         double speedup = avg_time1 / avg_time2;
         
         // 输出结果
-        cout << setw(10) << n 
-             << setw(15) << fixed << setprecision(3) << avg_time1
-             << setw(15) << avg_time2
-             << setw(15) << speedup
+        cout << setw(12) << n 
+             << setw(18) << fixed << setprecision(3) << avg_time1
+             << setw(18) << avg_time2
+             << setw(16) << speedup
              << endl;
     }
     

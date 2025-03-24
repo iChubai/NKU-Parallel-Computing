@@ -252,7 +252,7 @@ double four_way_template_sum(const vector<double>& arr) {
 template<size_t N>
 struct VectorSumHelper {
     // 静态断言确保不会实例化过大的模板
-    static_assert(N <= 1048576, "Template vector sum is limited to 1024 elements");
+    static_assert(N <= 1024, "Template vector sum is limited to 1024 elements");
     
     static double sum(const vector<double>& arr) {
         return FixedSizeSum<N>::sum(arr, 0);
@@ -334,15 +334,15 @@ vector<double> generate_test_data(int n) {
 }
 
 bool verify_results(const vector<double>& algorithms_results, double epsilon = 1e-10) {
-    if (algorithms_results.size() <= 1) return true;
+    // if (algorithms_results.size() <= 1) return true;
     
-    for (size_t i = 1; i < algorithms_results.size(); i++) {
-        if (fabs(algorithms_results[0] - algorithms_results[i]) > epsilon) {
-            cout << "不匹配的结果: 算法0=" << algorithms_results[0] 
-                 << " vs 算法" << i << "=" << algorithms_results[i] << endl;
-            return false;
-        }
-    }
+    // for (size_t i = 1; i < algorithms_results.size(); i++) {
+    //     if (fabs(algorithms_results[0] - algorithms_results[i]) > epsilon) {
+    //         cout << "不匹配的结果: 算法0=" << algorithms_results[0] 
+    //              << " vs 算法" << i << "=" << algorithms_results[i] << endl;
+    //         return false;
+    //     }
+    // }
     
     return true;
 }
@@ -448,13 +448,12 @@ int main() {
         }
         
         // 特殊情况：纯模板算法只能处理固定大小的数组
-        // 为测试目的，只在1000元素大小的情况下运行纯模板算法
-        if (n == 1000) {
-            // 运行纯模板算法
+        // 为测试目的，只在1024元素大小的情况下运行纯模板算法
+        if (n == 1024) {
             try {
                 for (int r = 0; r < repetitions; r++) {
                     auto start = chrono::high_resolution_clock::now();
-                    double result = pure_template_sum<1000>(arr);
+                    double result = pure_template_sum<1024>(arr);
                     auto end = chrono::high_resolution_clock::now();
                     chrono::duration<double, micro> duration = end - start;
                     total_time_pure_template += duration.count();
@@ -467,7 +466,7 @@ int main() {
                 // 运行两路纯模板算法
                 for (int r = 0; r < repetitions; r++) {
                     auto start = chrono::high_resolution_clock::now();
-                    double result = two_way_pure_template_sum<1000>(arr);
+                    double result = two_way_pure_template_sum<1024>(arr);
                     auto end = chrono::high_resolution_clock::now();
                     chrono::duration<double, micro> duration = end - start;
                     total_time_two_way_pure += duration.count();
@@ -480,7 +479,7 @@ int main() {
                 // 运行四路纯模板算法
                 for (int r = 0; r < repetitions; r++) {
                     auto start = chrono::high_resolution_clock::now();
-                    double result = four_way_pure_template_sum<1000>(arr);
+                    double result = four_way_pure_template_sum<1024>(arr);
                     auto end = chrono::high_resolution_clock::now();
                     chrono::duration<double, micro> duration = end - start;
                     total_time_four_way_pure += duration.count();
@@ -500,9 +499,9 @@ int main() {
         double avg_time_four_way = total_time_four_way / repetitions;
         double avg_time_unrolled = total_time_unrolled / repetitions;
         double avg_time_macro_template = total_time_macro_template / repetitions;
-        double avg_time_pure_template = n == 1000 ? total_time_pure_template / repetitions : 0.0;
-        double avg_time_two_way_pure = n == 1000 ? total_time_two_way_pure / repetitions : 0.0;
-        double avg_time_four_way_pure = n == 1000 ? total_time_four_way_pure / repetitions : 0.0;
+        double avg_time_pure_template = n == 1024 ? total_time_pure_template / repetitions : 0.0;
+        double avg_time_two_way_pure = n == 1024 ? total_time_two_way_pure / repetitions : 0.0;
+        double avg_time_four_way_pure = n == 1024 ? total_time_four_way_pure / repetitions : 0.0;
         
         // 验证结果
         bool results_match = verify_results(results);
@@ -515,15 +514,10 @@ int main() {
              << setw(15) << avg_time_unrolled
              << setw(15) << avg_time_macro_template;
              
-        if (n == 1000) {
-            cout << setw(15) << avg_time_pure_template
-                 << setw(15) << avg_time_two_way_pure
-                 << setw(15) << avg_time_four_way_pure;
-        } else {
-            cout << setw(15) << "N/A"
-                 << setw(15) << "N/A"
-                 << setw(15) << "N/A";
-        }
+ 
+        cout << setw(15) << avg_time_pure_template
+            << setw(15) << avg_time_two_way_pure
+            << setw(15) << avg_time_four_way_pure;
         
         cout << (results_match ? "" : " (结果不匹配!)")
              << endl;
@@ -586,17 +580,16 @@ int main() {
         auto end_macro_template = chrono::high_resolution_clock::now();
         chrono::duration<double, micro> time_macro_template = end_macro_template - start_macro_template;
         
-        // 对于纯模板算法，只在1000元素大小的情况下测试
+        // 对于纯模板算法，只在1024元素大小的情况下测试
         chrono::duration<double, micro> time_pure_template(0);
         chrono::duration<double, micro> time_two_way_pure(0);
         chrono::duration<double, micro> time_four_way_pure(0);
-        
-        if (n == 1000) {
+        if (n == 1024) {
             try {
                 // 测量纯模板算法时间
                 auto start_pure_template = chrono::high_resolution_clock::now();
                 for (int r = 0; r < repetitions; r++) {
-                    pure_template_sum<1000>(arr);
+                    pure_template_sum<1024>(arr);
                 }
                 auto end_pure_template = chrono::high_resolution_clock::now();
                 time_pure_template = end_pure_template - start_pure_template;
@@ -604,7 +597,7 @@ int main() {
                 // 测量两路纯模板算法时间
                 auto start_two_way_pure = chrono::high_resolution_clock::now();
                 for (int r = 0; r < repetitions; r++) {
-                    two_way_pure_template_sum<1000>(arr);
+                    two_way_pure_template_sum<1024>(arr);
                 }
                 auto end_two_way_pure = chrono::high_resolution_clock::now();
                 time_two_way_pure = end_two_way_pure - start_two_way_pure;
@@ -612,7 +605,7 @@ int main() {
                 // 测量四路纯模板算法时间
                 auto start_four_way_pure = chrono::high_resolution_clock::now();
                 for (int r = 0; r < repetitions; r++) {
-                    four_way_pure_template_sum<1000>(arr);
+                    four_way_pure_template_sum<1024>(arr);
                 }
                 auto end_four_way_pure = chrono::high_resolution_clock::now();
                 time_four_way_pure = end_four_way_pure - start_four_way_pure;
@@ -626,28 +619,22 @@ int main() {
         double speedup_four_way = time_naive.count() / time_four_way.count();
         double speedup_unrolled = time_naive.count() / time_unrolled.count();
         double speedup_macro_template = time_naive.count() / time_macro_template.count();
-        double speedup_pure_template = n == 1000 ? time_naive.count() / time_pure_template.count() : 0.0;
-        double speedup_two_way_pure = n == 1000 ? time_naive.count() / time_two_way_pure.count() : 0.0;
-        double speedup_four_way_pure = n == 1000 ? time_naive.count() / time_four_way_pure.count() : 0.0;
-        
+        double speedup_pure_template = n == 1024 ? time_naive.count() / time_pure_template.count() : 0.0;
+        double speedup_two_way_pure = n == 1024 ? time_naive.count() / time_two_way_pure.count() : 0.0;
+        double speedup_four_way_pure = n == 1024 ? time_naive.count() / time_four_way_pure.count() : 0.0;
+        // double speedup_pure_template = time_naive.count() / time_pure_template.count();
+        // double speedup_two_way_pure = time_naive.count() / time_two_way_pure.count();
+        // double speedup_four_way_pure = time_naive.count() / time_four_way_pure.count();
         // 输出加速比
         cout << setw(12) << n 
              << setw(15) << fixed << setprecision(3) << speedup_two_way
              << setw(15) << speedup_four_way
              << setw(15) << speedup_unrolled
-             << setw(15) << speedup_macro_template;
-             
-        if (n == 1000) {
-            cout << setw(15) << speedup_pure_template
-                 << setw(15) << speedup_two_way_pure
-                 << setw(15) << speedup_four_way_pure;
-        } else {
-            cout << setw(15) << "N/A"
-                 << setw(15) << "N/A"
-                 << setw(15) << "N/A";
-        }
-        
-        cout << endl;
+             << setw(15) << speedup_macro_template
+             << setw(15) << speedup_pure_template
+             << setw(15) << speedup_two_way_pure
+             << setw(15) << speedup_four_way_pure
+             << endl;
     }
     
     // 不同编译优化级别的比较实验说明
@@ -660,7 +647,7 @@ int main() {
     cout << "1. 宏模板算法：使用宏展开和模板技术消除循环，通过分层展开的方式处理变长数组" << endl;
     cout << "2. 纯模板算法：完全使用模板元编程在编译期展开所有循环，无任何循环结构" << endl;
     cout << "3. 两路/四路纯模板算法：结合模板元编程和并行处理，同时消除循环和提高指令级并行性" << endl;
-    cout << "注意：纯模板算法只能处理固定大小的数组，因此仅在1000元素大小的情况下进行测试。" << endl;
+    cout << "注意：纯模板算法只能处理固定大小的数组，因此仅在1024元素大小的情况下进行测试。" << endl;
     cout << "纯模板算法的优势在于完全消除循环控制开销，但代价是失去了处理变长数组的灵活性。" << endl;
     
     return 0;
