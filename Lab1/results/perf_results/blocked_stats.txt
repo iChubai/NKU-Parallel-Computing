@@ -1,0 +1,24 @@
+# started on Mon Mar 24 17:25:55 2025
+
+
+ Performance counter stats for './task1_matrix_test random 2000 blocked_only':
+
+        96,338,297      cycles                           #    2.075 GHz                         (58.56%)
+       321,534,361      instructions                     #    3.34  insn per cycle              (59.67%)
+        95,745,601      cache-references                 #    2.062 G/sec                       (61.70%)
+           989,819      cache-misses                     #    1.03% of all cache refs           (65.02%)
+            80,516      branch-misses                                                           (66.15%)
+        85,876,963      L1-dcache-loads                  #    1.850 G/sec                       (68.53%)
+           852,796      L1-dcache-load-misses            #    0.99% of all L1-dcache accesses   (67.88%)
+                 0      LLC-loads                        #    0.000 /sec                        (55.63%)
+         1,275,863      LLC-load-misses                                                         (54.92%)
+        92,585,769      dTLB-loads                       #    1.994 G/sec                       (51.16%)
+           335,486      dTLB-load-misses                 #    0.36% of all dTLB cache accesses  (49.35%)
+             46.42 msec task-clock                       #    0.770 CPUs utilized             
+
+       0.060286482 seconds time elapsed
+
+       0.028683000 seconds user
+       0.018166000 seconds sys
+
+

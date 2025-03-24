@@ -1,0 +1,27 @@
+# started on Mon Mar 24 17:25:51 2025
+
+
+ Performance counter stats for './task1_matrix_test random 3000 quick':
+
+       424,949,174      cycles                           #    2.091 GHz                         (62.63%)
+       907,175,568      instructions                     #    2.13  insn per cycle              (63.65%)
+       291,537,968      cache-references                 #    1.434 G/sec                       (63.07%)
+        15,089,734      cache-misses                     #    5.18% of all cache refs           (64.02%)
+           153,003      branch-misses                                                           (64.86%)
+       299,028,734      L1-dcache-loads                  #    1.471 G/sec                       (64.09%)
+        14,774,511      L1-dcache-load-misses            #    4.94% of all L1-dcache accesses   (64.28%)
+                 0      LLC-loads                        #    0.000 /sec                        (53.82%)
+         9,537,809      LLC-load-misses                                                         (54.09%)
+       288,700,860      dTLB-loads                       #    1.420 G/sec                       (54.43%)
+        10,331,943      dTLB-load-misses                 #    3.58% of all dTLB cache accesses  (53.71%)
+            203.27 msec task-clock                       #    0.897 CPUs utilized             
+               326      context-switches                 #    1.604 K/sec                     
+                 0      cpu-migrations                   #    0.000 /sec                      
+            17,778      page-faults                      #   87.459 K/sec                     
+
+       0.226618102 seconds time elapsed
+
+       0.159783000 seconds user
+       0.042799000 seconds sys
+
+

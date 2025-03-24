@@ -1,0 +1,26 @@
+# started on Mon Mar 24 17:25:55 2025
+
+
+ Performance counter stats for './task1_matrix_test random 2000 openmp_only':
+
+        85,186,330      cycles                           #    1.993 GHz                         (60.31%)
+       284,819,281      instructions                     #    3.34  insn per cycle              (60.22%)
+        71,675,539      cache-references                 #    1.677 G/sec                       (63.18%)
+           590,710      cache-misses                     #    0.82% of all cache refs           (65.79%)
+            78,563      branch-misses                                                           (65.95%)
+        69,126,442      L1-dcache-loads                  #    1.617 G/sec                       (67.06%)
+           543,734      L1-dcache-load-misses            #    0.79% of all L1-dcache accesses   (66.81%)
+                 0      LLC-loads                        #    0.000 /sec                        (55.25%)
+         1,188,152      LLC-load-misses                                                         (53.54%)
+        73,718,469      dTLB-loads                       #    1.725 G/sec                       (51.68%)
+           189,048      dTLB-load-misses                 #    0.26% of all dTLB cache accesses  (50.51%)
+             42.74 msec task-clock                       #    0.894 CPUs utilized             
+                73      context-switches                 #    1.708 K/sec                     
+                 0      cpu-migrations                   #    0.000 /sec                      
+
+       0.047788641 seconds time elapsed
+
+       0.026160000 seconds user
+       0.016817000 seconds sys
+
+

@@ -1,0 +1,40 @@
+========== 矩阵乘法性能分析摘要 ==========
+日期: Mon Mar 24 05:25:55 PM CST 2025
+系统: Linux iZ2ze5ppsdykg5igyg292tZ 6.8.0-53-generic #55-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 17 15:02:14 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+CPU: 
+核心数: 1
+
+========== 算法性能比较 ==========
+朴素算法:
+ Performance counter stats for './task1_matrix_test random 2000 naive_only':
+
+       144,230,513      cycles                           #    2.085 GHz                         (62.66%)
+       318,768,738      instructions                     #    2.21  insn per cycle              (61.51%)
+        83,623,907      cache-references                 #    1.209 G/sec                       (62.66%)
+         5,630,430      cache-misses                     #    6.73% of all cache refs           (63.39%)
+
+缓存优化算法:
+ Performance counter stats for './task1_matrix_test random 2000 cache_opt_only':
+
+        87,686,592      cycles                           #    2.091 GHz                         (65.06%)
+       284,303,803      instructions                     #    3.24  insn per cycle              (64.33%)
+        72,719,708      cache-references                 #    1.734 G/sec                       (63.31%)
+           608,573      cache-misses                     #    0.84% of all cache refs           (62.25%)
+
+OpenMP并行算法:
+ Performance counter stats for './task1_matrix_test random 2000 openmp_only':
+
+        85,186,330      cycles                           #    1.993 GHz                         (60.31%)
+       284,819,281      instructions                     #    3.34  insn per cycle              (60.22%)
+        71,675,539      cache-references                 #    1.677 G/sec                       (63.18%)
+           590,710      cache-misses                     #    0.82% of all cache refs           (65.79%)
+
+分块算法:
+ Performance counter stats for './task1_matrix_test random 2000 blocked_only':
+
+        96,338,297      cycles                           #    2.075 GHz                         (58.56%)
+       321,534,361      instructions                     #    3.34  insn per cycle              (59.67%)
+        95,745,601      cache-references                 #    2.062 G/sec                       (61.70%)
+           989,819      cache-misses                     #    1.03% of all cache refs           (65.02%)
+
+完整结果请查看 results/perf_results/ 目录中的各个文件

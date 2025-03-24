@@ -1,0 +1,16 @@
+# started on Mon Mar 24 17:25:55 2025
+
+
+ Performance counter stats for './task1_matrix_test random 4000 quick':
+
+       765,207,104      cycles                                                                
+     1,625,187,439      instructions                     #    2.12  insn per cycle            
+       518,524,848      cache-references                                                      
+        26,362,361      cache-misses                     #    5.08% of all cache refs         
+
+       0.323579988 seconds time elapsed
+
+       0.236178000 seconds user
+       0.055077000 seconds sys
+
+

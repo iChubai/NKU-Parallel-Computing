@@ -3,13 +3,13 @@
 # 创建输出目录
 mkdir -p results
 
-# 编译不同优化级别的程序
+# 编译不同优化级别的程序（添加OpenMP支持）
 echo "编译不同优化级别的程序..."
-g++ -O0 task1.cpp -o task1_O0
-g++ -O1 task1.cpp -o task1_O1
-g++ -O2 task1.cpp -o task1_O2
-g++ -O3 task1.cpp -o task1_O3
-g++ -Ofast task1.cpp -o task1_Ofast
+g++ -fopenmp -O0 task1.cpp -o task1_O0
+g++ -fopenmp -O1 task1.cpp -o task1_O1
+g++ -fopenmp -O2 task1.cpp -o task1_O2
+g++ -fopenmp -O3 task1.cpp -o task1_O3
+g++ -fopenmp -Ofast task1.cpp -o task1_Ofast
 
 g++ -O0 -ftemplate-depth=1025 task2.cpp -o task2_O0
 g++ -O1 -ftemplate-depth=1025 task2.cpp -o task2_O1
@@ -40,18 +40,11 @@ echo "size,two_way,four_way,unrolled,macro_template,pure_template,two_way_pure,f
 echo "size,naive,two_way,four_way,unrolled,macro_template,pure_template,two_way_pure,four_way_pure" > results/task2_time_Ofast.csv
 echo "size,two_way,four_way,unrolled,macro_template,pure_template,two_way_pure,four_way_pure" > results/task2_speedup_Ofast.csv
 
-# 收集Task1数据
-echo "收集Task1数据..."
-
-collect_task1_data() {
-    optimization=$1
-    ./task1_$optimization | grep -v "^注意" | awk 'BEGIN {FS="[| ]+"} 
-    /^[0-9]+/ {printf "%d,%f,%f,%f\n", $1, $2, $3, $4}' >> results/task1_$optimization.csv
-}
-
-for opt in O0 O1 O2 O3 Ofast; do
+# 收集Task1数据（扩展版）
+echo "收集Task1数据（扩展版）..."
+for opt in O3; do
     echo "运行 Task1 - $opt 优化..."
-    collect_task1_data $opt
+    ./task1_$opt
 done
 
 # 收集Task2数据
@@ -75,5 +68,9 @@ for opt in O0 O1 O2 O3 Ofast; do
     echo "运行 Task2 - $opt 优化..."
     collect_task2_data $opt
 done
+
+# 运行矩阵性能分析脚本
+echo "运行矩阵性能分析..."
+python3 plot_matrix_performance.py
 
 echo "数据收集完成。结果保存在 results/ 目录中。" 

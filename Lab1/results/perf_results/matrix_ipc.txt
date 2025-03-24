@@ -1,0 +1,14 @@
+# started on Mon Mar 24 17:25:51 2025
+
+
+ Performance counter stats for './task1_matrix_test random 3000 quick':
+
+       421,230,695      cycles                                                                
+       912,436,528      instructions                     #    2.17  insn per cycle            
+
+       0.171596805 seconds time elapsed
+
+       0.128408000 seconds user
+       0.027181000 seconds sys
+
+

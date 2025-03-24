@@ -1,0 +1,21 @@
+# started on Mon Mar 24 17:25:51 2025
+
+
+ Performance counter stats for './task1_matrix_test random 3000 quick':
+
+            168.97 msec task-clock                       #    0.806 CPUs utilized             
+               288      context-switches                 #    1.704 K/sec                     
+                 0      cpu-migrations                   #    0.000 /sec                      
+            17,777      page-faults                      #  105.206 K/sec                     
+       430,797,956      cycles                           #    2.549 GHz                       
+       919,394,849      instructions                     #    2.13  insn per cycle            
+       104,712,083      branches                         #  619.694 M/sec                     
+           148,075      branch-misses                    #    0.14% of all branches           
+                        TopdownL1                                                      
+
+       0.209737592 seconds time elapsed
+
+       0.137233000 seconds user
+       0.029672000 seconds sys
+
+

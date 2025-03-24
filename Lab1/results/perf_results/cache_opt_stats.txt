@@ -1,0 +1,24 @@
+# started on Mon Mar 24 17:25:55 2025
+
+
+ Performance counter stats for './task1_matrix_test random 2000 cache_opt_only':
+
+        87,686,592      cycles                           #    2.091 GHz                         (65.06%)
+       284,303,803      instructions                     #    3.24  insn per cycle              (64.33%)
+        72,719,708      cache-references                 #    1.734 G/sec                       (63.31%)
+           608,573      cache-misses                     #    0.84% of all cache refs           (62.25%)
+            74,159      branch-misses                                                           (63.09%)
+        69,152,172      L1-dcache-loads                  #    1.649 G/sec                       (62.57%)
+           516,924      L1-dcache-load-misses            #    0.75% of all L1-dcache accesses   (63.69%)
+                 0      LLC-loads                        #    0.000 /sec                        (55.15%)
+         1,532,297      LLC-load-misses                                                         (54.95%)
+        74,400,736      dTLB-loads                       #    1.774 G/sec                       (55.70%)
+           211,709      dTLB-load-misses                 #    0.28% of all dTLB cache accesses  (54.97%)
+             41.94 msec task-clock                       #    0.920 CPUs utilized             
+
+       0.045594498 seconds time elapsed
+
+       0.027095000 seconds user
+       0.014949000 seconds sys
+
+
