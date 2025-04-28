@@ -1,0 +1,17 @@
+# started on Mon Apr 21 16:17:50 2025
+
+
+ Performance counter stats for './main_simd 2':
+
+       967,828,747      cycles:u                                                    
+     2,537,321,479      instructions:u            #    2.62  insn per cycle         
+           534,065      branch-misses:u                                             
+       649,475,056      cache-references:u                                          
+         3,640,999      cache-misses:u            #    0.561 % of all cache refs    
+
+       0.412261882 seconds time elapsed
+
+       0.392026000 seconds user
+       0.015750000 seconds sys
+
+

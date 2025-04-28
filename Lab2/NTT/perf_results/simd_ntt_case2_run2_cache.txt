@@ -1,0 +1,16 @@
+# started on Mon Apr 21 16:17:47 2025
+
+
+ Performance counter stats for './main_simd 2':
+
+       649,364,385      L1-dcache-loads:u                                           
+         3,673,832      L1-dcache-load-misses:u   #    0.57% of all L1-dcache accesses
+         4,466,020      LLC-loads:u                                                 
+            79,514      LLC-load-misses:u         #    1.78% of all LL-cache accesses
+
+       0.403499735 seconds time elapsed
+
+       0.390173000 seconds user
+       0.012075000 seconds sys
+
+

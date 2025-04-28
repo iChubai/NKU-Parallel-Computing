@@ -1,0 +1,10 @@
+多项式乘法结果正确
+latency: n=4 p=7340033 => 0.00301 ms
+多项式乘法结果正确
+latency: n=131072 p=7340033 => 31.8382 ms
+多项式乘法结果正确
+latency: n=131072 p=104857601 => 33.6556 ms
+多项式乘法结果正确
+latency: n=131072 p=469762049 => 34.939 ms
+
+Authorized users only. All activities may be monitored and reported.

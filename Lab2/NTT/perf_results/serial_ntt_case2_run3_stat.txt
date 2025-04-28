@@ -1,0 +1,17 @@
+# started on Mon Apr 21 16:17:48 2025
+
+
+ Performance counter stats for './main_orig 2':
+
+     1,224,880,049      cycles:u                                                    
+     2,164,149,747      instructions:u            #    1.77  insn per cycle         
+           541,817      branch-misses:u                                             
+       666,511,318      cache-references:u                                          
+         3,846,360      cache-misses:u            #    0.577 % of all cache refs    
+
+       0.504004270 seconds time elapsed
+
+       0.486251000 seconds user
+       0.015955000 seconds sys
+
+

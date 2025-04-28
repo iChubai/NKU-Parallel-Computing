@@ -1,0 +1,668 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 116  of event 'cycles:u'
+# Event count (approx.): 903125698
+#
+# Children      Self  Command    Shared Object          Symbol                                                                                                
+# ........  ........  .........  .....................  ......................................................................................................
+#
+   100.00%     0.00%  main_simd  main_simd              [.] _start
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               |          
+               |--44.97%--poly_multiply_simd
+               |          |          
+               |          |--28.83%--ntt_simd
+               |          |          
+               |           --16.14%--ntt_simd
+               |          
+               |--20.58%--fCheck
+               |          std::istream::operator>>
+               |          |          
+               |          |--13.01%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--1.08%--0xffffba5629e0
+               |          |          |          
+               |          |           --1.07%--std::locale::id::_M_id@plt
+               |          |          
+               |          |--3.24%--std::istream::sentry::sentry
+               |          |          
+               |          |--1.09%--0xffffba55ff40
+               |          |          
+               |           --1.08%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--17.07%--fWrite
+               |          |          
+               |          |--14.13%--std::ostream::_M_insert<long>
+               |          |          |          
+               |          |          |--6.13%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_streambuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_filebuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |           --1.07%--0xffffba55ff60
+               |          |          |          
+               |          |          |--2.98%--0xffffba55e578
+               |          |          |          
+               |          |           --1.00%--std::ostream::sentry::sentry
+               |          |          
+               |          |--1.95%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |          |--0.97%--0xffffba1dc0b4
+               |          |          |          
+               |          |           --0.97%--std::codecvt<char, char, __mbstate_t>::do_always_noconv
+               |          |          
+               |           --0.99%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put
+               |          
+               |--15.35%--fRead
+               |          |          
+               |           --14.40%--std::istream::operator>>
+               |                     |          
+               |                     |--10.20%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --0.95%--0xffffba562914
+               |                     |          
+               |                      --1.18%--std::istream::sentry::sentry
+               |          
+               |--1.03%--std::__ostream_insert<char, std::char_traits<char> >@plt
+               |          
+                --0.99%--std::ostream::_M_insert<long>@plt
+
+   100.00%     0.00%  main_simd  libc.so.6              [.] __libc_start_main
+            |
+            ---__libc_start_main
+               0xffffba16b000
+               main
+               |          
+               |--44.97%--poly_multiply_simd
+               |          |          
+               |          |--28.83%--ntt_simd
+               |          |          
+               |           --16.14%--ntt_simd
+               |          
+               |--20.58%--fCheck
+               |          std::istream::operator>>
+               |          |          
+               |          |--13.01%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--1.08%--0xffffba5629e0
+               |          |          |          
+               |          |           --1.07%--std::locale::id::_M_id@plt
+               |          |          
+               |          |--3.24%--std::istream::sentry::sentry
+               |          |          
+               |          |--1.09%--0xffffba55ff40
+               |          |          
+               |           --1.08%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--17.07%--fWrite
+               |          |          
+               |          |--14.13%--std::ostream::_M_insert<long>
+               |          |          |          
+               |          |          |--6.13%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_streambuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_filebuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |           --1.07%--0xffffba55ff60
+               |          |          |          
+               |          |          |--2.98%--0xffffba55e578
+               |          |          |          
+               |          |           --1.00%--std::ostream::sentry::sentry
+               |          |          
+               |          |--1.95%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |          |--0.97%--0xffffba1dc0b4
+               |          |          |          
+               |          |           --0.97%--std::codecvt<char, char, __mbstate_t>::do_always_noconv
+               |          |          
+               |           --0.99%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put
+               |          
+               |--15.35%--fRead
+               |          |          
+               |           --14.40%--std::istream::operator>>
+               |                     |          
+               |                     |--10.20%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --0.95%--0xffffba562914
+               |                     |          
+               |                      --1.18%--std::istream::sentry::sentry
+               |          
+               |--1.03%--std::__ostream_insert<char, std::char_traits<char> >@plt
+               |          
+                --0.99%--std::ostream::_M_insert<long>@plt
+
+   100.00%     0.00%  main_simd  libc.so.6              [.] 0x0000ffffba16b000
+            |
+            ---0xffffba16b000
+               main
+               |          
+               |--44.97%--poly_multiply_simd
+               |          |          
+               |          |--28.83%--ntt_simd
+               |          |          
+               |           --16.14%--ntt_simd
+               |          
+               |--20.58%--fCheck
+               |          std::istream::operator>>
+               |          |          
+               |          |--13.01%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--1.08%--0xffffba5629e0
+               |          |          |          
+               |          |           --1.07%--std::locale::id::_M_id@plt
+               |          |          
+               |          |--3.24%--std::istream::sentry::sentry
+               |          |          
+               |          |--1.09%--0xffffba55ff40
+               |          |          
+               |           --1.08%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--17.07%--fWrite
+               |          |          
+               |          |--14.13%--std::ostream::_M_insert<long>
+               |          |          |          
+               |          |          |--6.13%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_streambuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_filebuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |           --1.07%--0xffffba55ff60
+               |          |          |          
+               |          |          |--2.98%--0xffffba55e578
+               |          |          |          
+               |          |           --1.00%--std::ostream::sentry::sentry
+               |          |          
+               |          |--1.95%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |          |--0.97%--0xffffba1dc0b4
+               |          |          |          
+               |          |           --0.97%--std::codecvt<char, char, __mbstate_t>::do_always_noconv
+               |          |          
+               |           --0.99%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put
+               |          
+               |--15.35%--fRead
+               |          |          
+               |           --14.40%--std::istream::operator>>
+               |                     |          
+               |                     |--10.20%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --0.95%--0xffffba562914
+               |                     |          
+               |                      --1.18%--std::istream::sentry::sentry
+               |          
+               |--1.03%--std::__ostream_insert<char, std::char_traits<char> >@plt
+               |          
+                --0.99%--std::ostream::_M_insert<long>@plt
+
+   100.00%     0.00%  main_simd  main_simd              [.] main
+            |
+            ---main
+               |          
+               |--44.97%--poly_multiply_simd
+               |          |          
+               |          |--28.83%--ntt_simd
+               |          |          
+               |           --16.14%--ntt_simd
+               |          
+               |--20.58%--fCheck
+               |          std::istream::operator>>
+               |          |          
+               |          |--13.01%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--1.08%--0xffffba5629e0
+               |          |          |          
+               |          |           --1.07%--std::locale::id::_M_id@plt
+               |          |          
+               |          |--3.24%--std::istream::sentry::sentry
+               |          |          
+               |          |--1.09%--0xffffba55ff40
+               |          |          
+               |           --1.08%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--17.07%--fWrite
+               |          |          
+               |          |--14.13%--std::ostream::_M_insert<long>
+               |          |          |          
+               |          |          |--6.13%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_streambuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |          |--2.04%--std::basic_filebuf<char, std::char_traits<char> >::xsputn
+               |          |          |          |          
+               |          |          |           --1.07%--0xffffba55ff60
+               |          |          |          
+               |          |          |--2.98%--0xffffba55e578
+               |          |          |          
+               |          |           --1.00%--std::ostream::sentry::sentry
+               |          |          
+               |          |--1.95%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |          |--0.97%--0xffffba1dc0b4
+               |          |          |          
+               |          |           --0.97%--std::codecvt<char, char, __mbstate_t>::do_always_noconv
+               |          |          
+               |           --0.99%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put
+               |          
+               |--15.35%--fRead
+               |          |          
+               |           --14.40%--std::istream::operator>>
+               |                     |          
+               |                     |--10.20%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --0.95%--0xffffba562914
+               |                     |          
+               |                      --1.18%--std::istream::sentry::sentry
+               |          
+               |--1.03%--std::__ostream_insert<char, std::char_traits<char> >@plt
+               |          
+                --0.99%--std::ostream::_M_insert<long>@plt
+
+    44.97%     0.00%  main_simd  main_simd              [.] poly_multiply_simd
+            |
+            ---poly_multiply_simd
+               |          
+               |--28.83%--ntt_simd
+               |          
+                --16.14%--ntt_simd
+
+    34.99%     5.12%  main_simd  libstdc++.so.6.0.28    [.] std::istream::operator>>
+            |          
+            |--29.87%--std::istream::operator>>
+            |          |          
+            |          |--23.21%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          |          |          
+            |          |          |--1.08%--0xffffba5629e0
+            |          |          |          
+            |          |          |--1.07%--std::locale::id::_M_id@plt
+            |          |          |          
+            |          |           --0.95%--0xffffba562914
+            |          |          
+            |          |--4.43%--std::istream::sentry::sentry
+            |          |          
+            |          |--1.09%--0xffffba55ff40
+            |          |          
+            |           --1.08%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+            |          
+             --5.12%--_start
+                       __libc_start_main
+                       0xffffba16b000
+                       main
+                       |          
+                       |--2.97%--fRead
+                       |          std::istream::operator>>
+                       |          
+                        --2.15%--fCheck
+                                  std::istream::operator>>
+
+    28.83%    28.83%  main_simd  main_simd              [.] ntt_simd
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               poly_multiply_simd
+               ntt_simd
+
+    23.21%    20.10%  main_simd  libstdc++.so.6.0.28    [.] std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          
+            |--20.10%--_start
+            |          __libc_start_main
+            |          0xffffba16b000
+            |          main
+            |          |          
+            |          |--10.86%--fCheck
+            |          |          std::istream::operator>>
+            |          |          std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          |          
+            |           --9.24%--fRead
+            |                     std::istream::operator>>
+            |                     std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          
+             --3.11%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+                       |          
+                       |--1.08%--0xffffba5629e0
+                       |          
+                       |--1.07%--std::locale::id::_M_id@plt
+                       |          
+                        --0.95%--0xffffba562914
+
+    20.58%     0.00%  main_simd  main_simd              [.] fCheck
+            |
+            ---fCheck
+               std::istream::operator>>
+               |          
+               |--13.01%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          
+               |          |--1.08%--0xffffba5629e0
+               |          |          
+               |           --1.07%--std::locale::id::_M_id@plt
+               |          
+               |--3.24%--std::istream::sentry::sentry
+               |          
+               |--1.09%--0xffffba55ff40
+               |          
+                --1.08%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+
+    17.07%     0.00%  main_simd  main_simd              [.] fWrite
+            |
+            ---fWrite
+               |          
+               |--14.13%--std::ostream::_M_insert<long>
+               |          |          
+               |          |--6.13%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               |          |          |          
+               |          |          |--2.04%--std::basic_streambuf<char, std::char_traits<char> >::xsputn
+               |          |          |          
+               |          |          |--2.04%--std::basic_filebuf<char, std::char_traits<char> >::xsputn
+               |          |          |          
+               |          |           --1.07%--0xffffba55ff60
+               |          |          
+               |          |--2.98%--0xffffba55e578
+               |          |          
+               |           --1.00%--std::ostream::sentry::sentry
+               |          
+               |--1.95%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          
+               |          |--0.97%--0xffffba1dc0b4
+               |          |          
+               |           --0.97%--std::codecvt<char, char, __mbstate_t>::do_always_noconv
+               |          
+                --0.99%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put
+
+    16.14%    16.14%  main_simd  main_simd              [.] ntt_simd
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               poly_multiply_simd
+               ntt_simd
+
+    15.35%     0.94%  main_simd  main_simd              [.] fRead
+            |          
+            |--14.41%--fRead
+            |          |          
+            |           --14.40%--std::istream::operator>>
+            |                     |          
+            |                     |--10.20%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |                     |          |          
+            |                     |           --0.95%--0xffffba562914
+            |                     |          
+            |                      --1.18%--std::istream::sentry::sentry
+            |          
+             --0.94%--_start
+                       __libc_start_main
+                       0xffffba16b000
+                       main
+                       fRead
+
+    14.13%     4.01%  main_simd  libstdc++.so.6.0.28    [.] std::ostream::_M_insert<long>
+            |          
+            |--10.12%--std::ostream::_M_insert<long>
+            |          |          
+            |          |--6.13%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+            |          |          |          
+            |          |          |--2.04%--std::basic_streambuf<char, std::char_traits<char> >::xsputn
+            |          |          |          
+            |          |          |--2.04%--std::basic_filebuf<char, std::char_traits<char> >::xsputn
+            |          |          |          
+            |          |           --1.07%--0xffffba55ff60
+            |          |          
+            |          |--2.98%--0xffffba55e578
+            |          |          
+            |           --1.00%--std::ostream::sentry::sentry
+            |          
+             --4.01%--_start
+                       __libc_start_main
+                       0xffffba16b000
+                       main
+                       fWrite
+                       std::ostream::_M_insert<long>
+
+     6.13%     0.98%  main_simd  libstdc++.so.6.0.28    [.] std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+            |          
+            |--5.15%--std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+            |          |          
+            |          |--2.04%--std::basic_streambuf<char, std::char_traits<char> >::xsputn
+            |          |          
+            |          |--2.04%--std::basic_filebuf<char, std::char_traits<char> >::xsputn
+            |          |          
+            |           --1.07%--0xffffba55ff60
+            |          
+             --0.98%--_start
+                       __libc_start_main
+                       0xffffba16b000
+                       main
+                       fWrite
+                       std::ostream::_M_insert<long>
+                       std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+
+     4.44%     4.44%  main_simd  libstdc++.so.6.0.28    [.] std::istream::sentry::sentry
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               |          
+               |--3.24%--fCheck
+               |          std::istream::operator>>
+               |          std::istream::sentry::sentry
+               |          
+                --1.19%--fRead
+                          |          
+                           --1.18%--std::istream::operator>>
+                                     std::istream::sentry::sentry
+
+     2.98%     2.98%  main_simd  libstdc++.so.6.0.28    [.] 0x000000000011e578
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::ostream::_M_insert<long>
+               0xffffba55e578
+
+     2.98%     0.00%  main_simd  libstdc++.so.6.0.28    [.] 0x0000ffffba55e578
+            |
+            ---0xffffba55e578
+
+     2.04%     2.04%  main_simd  libstdc++.so.6.0.28    [.] std::basic_streambuf<char, std::char_traits<char> >::xsputn
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::ostream::_M_insert<long>
+               std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               std::basic_streambuf<char, std::char_traits<char> >::xsputn
+
+     2.04%     2.04%  main_simd  libstdc++.so.6.0.28    [.] std::basic_filebuf<char, std::char_traits<char> >::xsputn
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::ostream::_M_insert<long>
+               std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               std::basic_filebuf<char, std::char_traits<char> >::xsputn
+
+     1.95%     0.00%  main_simd  libstdc++.so.6.0.28    [.] std::__ostream_insert<char, std::char_traits<char> >
+            |
+            ---std::__ostream_insert<char, std::char_traits<char> >
+               |          
+               |--0.97%--0xffffba1dc0b4
+               |          
+                --0.97%--std::codecvt<char, char, __mbstate_t>::do_always_noconv
+
+     1.09%     1.09%  main_simd  libstdc++.so.6.0.28    [.] 0x000000000011ff40
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fCheck
+               std::istream::operator>>
+               0xffffba55ff40
+
+     1.09%     0.00%  main_simd  libstdc++.so.6.0.28    [.] 0x0000ffffba55ff40
+            |
+            ---0xffffba55ff40
+
+     1.08%     1.08%  main_simd  libstdc++.so.6.0.28    [.] 0x00000000001229e0
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fCheck
+               std::istream::operator>>
+               std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               0xffffba5629e0
+
+     1.08%     0.00%  main_simd  libstdc++.so.6.0.28    [.] 0x0000ffffba5629e0
+            |
+            ---0xffffba5629e0
+
+     1.08%     1.08%  main_simd  libstdc++.so.6.0.28    [.] std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fCheck
+               std::istream::operator>>
+               std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+
+     1.07%     1.07%  main_simd  libstdc++.so.6.0.28    [.] std::locale::id::_M_id@plt
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fCheck
+               std::istream::operator>>
+               std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               std::locale::id::_M_id@plt
+
+     1.07%     1.07%  main_simd  libstdc++.so.6.0.28    [.] 0x000000000011ff60
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::ostream::_M_insert<long>
+               std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>
+               0xffffba55ff60
+
+     1.07%     0.00%  main_simd  libstdc++.so.6.0.28    [.] 0x0000ffffba55ff60
+            |
+            ---0xffffba55ff60
+
+     1.03%     1.03%  main_simd  main_simd              [.] std::__ostream_insert<char, std::char_traits<char> >@plt
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               std::__ostream_insert<char, std::char_traits<char> >@plt
+
+     1.00%     1.00%  main_simd  libstdc++.so.6.0.28    [.] std::ostream::sentry::sentry
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::ostream::_M_insert<long>
+               std::ostream::sentry::sentry
+
+     0.99%     0.99%  main_simd  libstdc++.so.6.0.28    [.] std::ostream::_M_insert<long>@plt
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               std::ostream::_M_insert<long>@plt
+
+     0.99%     0.99%  main_simd  libstdc++.so.6.0.28    [.] std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put
+
+     0.97%     0.97%  main_simd  libc.so.6              [.] 0x000000000009c0b4
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::__ostream_insert<char, std::char_traits<char> >
+               0xffffba1dc0b4
+
+     0.97%     0.00%  main_simd  libc.so.6              [.] 0x0000ffffba1dc0b4
+            |
+            ---0xffffba1dc0b4
+
+     0.97%     0.97%  main_simd  libstdc++.so.6.0.28    [.] std::codecvt<char, char, __mbstate_t>::do_always_noconv
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fWrite
+               std::__ostream_insert<char, std::char_traits<char> >
+               std::codecvt<char, char, __mbstate_t>::do_always_noconv
+
+     0.95%     0.95%  main_simd  libstdc++.so.6.0.28    [.] 0x0000000000122914
+            |
+            ---_start
+               __libc_start_main
+               0xffffba16b000
+               main
+               fRead
+               std::istream::operator>>
+               std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               0xffffba562914
+
+     0.95%     0.00%  main_simd  libstdc++.so.6.0.28    [.] 0x0000ffffba562914
+            |
+            ---0xffffba562914
+
+     0.06%     0.06%  main_simd  [unknown]              [k] 0xffffc2183d39bf80
+     0.06%     0.00%  main_simd  [unknown]              [.] 0xffffc2183c5a2560
+     0.06%     0.00%  main_simd  [unknown]              [.] 0xffffc2183d39c868
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000000000007230
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba654dd4
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba650e68
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba64f78c
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba6526ec
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba63b3ac
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] _dl_catch_exception
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba63ae40
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba6424ec
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba63f230
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x000000000001cdc0
+     0.00%     0.00%  main_simd  ld-linux-aarch64.so.1  [.] 0x0000ffffba654dc0
+
+
+#
+# (Tip: Order by the overhead of source file name and line number: perf report -s srcline)
+#

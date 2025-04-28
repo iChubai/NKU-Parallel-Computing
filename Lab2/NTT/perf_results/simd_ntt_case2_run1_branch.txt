@@ -1,0 +1,14 @@
+# started on Mon Apr 21 16:17:44 2025
+
+
+ Performance counter stats for './main_simd 2':
+
+   <not supported>      branch-instructions:u                                       
+           528,460      branch-misses:u                                             
+
+       0.405363318 seconds time elapsed
+
+       0.383311000 seconds user
+       0.019861000 seconds sys
+
+

@@ -1,0 +1,469 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 207  of event 'cycles:u'
+# Event count (approx.): 836827155
+#
+# Children      Self  Command  Shared Object          Symbol                                                                                                
+# ........  ........  .......  .....................  ......................................................................................................
+#
+   100.00%     0.00%  main     main                   [.] _start
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               |          
+               |--62.43%--poly_multiply
+               |          |          
+               |          |--36.88%--ntt
+               |          |          
+               |           --23.62%--ntt
+               |          
+               |--21.28%--fCheck
+               |          |          
+               |           --18.62%--std::istream::operator>>
+               |                     |          
+               |                     |--11.93%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --1.18%--0xffff893329e0
+               |                     |          
+               |                      --6.64%--std::istream::sentry::sentry
+               |          
+               |--10.75%--fRead
+               |          std::istream::operator>>
+               |          |          
+               |          |--4.79%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--0.98%--0xffff893329e0
+               |          |          |          
+               |          |           --0.95%--0xffff893329d0
+               |          |          
+               |          |--3.73%--std::istream::sentry::sentry
+               |          |          
+               |           --1.05%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--3.61%--fWrite
+               |          |          
+               |          |--2.06%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |           --1.06%--std::ostream::sentry::sentry
+               |          |          
+               |           --1.55%--std::ostream::_M_insert<long>
+               |                     |          
+               |                      --1.00%--std::ostream::sentry::sentry
+               |          
+                --1.42%--std::ostream::operator<<@plt
+
+   100.00%     0.00%  main     libc.so.6              [.] __libc_start_main
+            |
+            ---__libc_start_main
+               0xffff88f3b000
+               main
+               |          
+               |--62.43%--poly_multiply
+               |          |          
+               |          |--36.88%--ntt
+               |          |          
+               |           --23.62%--ntt
+               |          
+               |--21.28%--fCheck
+               |          |          
+               |           --18.62%--std::istream::operator>>
+               |                     |          
+               |                     |--11.93%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --1.18%--0xffff893329e0
+               |                     |          
+               |                      --6.64%--std::istream::sentry::sentry
+               |          
+               |--10.75%--fRead
+               |          std::istream::operator>>
+               |          |          
+               |          |--4.79%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--0.98%--0xffff893329e0
+               |          |          |          
+               |          |           --0.95%--0xffff893329d0
+               |          |          
+               |          |--3.73%--std::istream::sentry::sentry
+               |          |          
+               |           --1.05%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--3.61%--fWrite
+               |          |          
+               |          |--2.06%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |           --1.06%--std::ostream::sentry::sentry
+               |          |          
+               |           --1.55%--std::ostream::_M_insert<long>
+               |                     |          
+               |                      --1.00%--std::ostream::sentry::sentry
+               |          
+                --1.42%--std::ostream::operator<<@plt
+
+   100.00%     0.00%  main     libc.so.6              [.] 0x0000ffff88f3b000
+            |
+            ---0xffff88f3b000
+               main
+               |          
+               |--62.43%--poly_multiply
+               |          |          
+               |          |--36.88%--ntt
+               |          |          
+               |           --23.62%--ntt
+               |          
+               |--21.28%--fCheck
+               |          |          
+               |           --18.62%--std::istream::operator>>
+               |                     |          
+               |                     |--11.93%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --1.18%--0xffff893329e0
+               |                     |          
+               |                      --6.64%--std::istream::sentry::sentry
+               |          
+               |--10.75%--fRead
+               |          std::istream::operator>>
+               |          |          
+               |          |--4.79%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--0.98%--0xffff893329e0
+               |          |          |          
+               |          |           --0.95%--0xffff893329d0
+               |          |          
+               |          |--3.73%--std::istream::sentry::sentry
+               |          |          
+               |           --1.05%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--3.61%--fWrite
+               |          |          
+               |          |--2.06%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |           --1.06%--std::ostream::sentry::sentry
+               |          |          
+               |           --1.55%--std::ostream::_M_insert<long>
+               |                     |          
+               |                      --1.00%--std::ostream::sentry::sentry
+               |          
+                --1.42%--std::ostream::operator<<@plt
+
+   100.00%     0.00%  main     main                   [.] main
+            |
+            ---main
+               |          
+               |--62.43%--poly_multiply
+               |          |          
+               |          |--36.88%--ntt
+               |          |          
+               |           --23.62%--ntt
+               |          
+               |--21.28%--fCheck
+               |          |          
+               |           --18.62%--std::istream::operator>>
+               |                     |          
+               |                     |--11.93%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |                     |          |          
+               |                     |           --1.18%--0xffff893329e0
+               |                     |          
+               |                      --6.64%--std::istream::sentry::sentry
+               |          
+               |--10.75%--fRead
+               |          std::istream::operator>>
+               |          |          
+               |          |--4.79%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          |          
+               |          |          |--0.98%--0xffff893329e0
+               |          |          |          
+               |          |           --0.95%--0xffff893329d0
+               |          |          
+               |          |--3.73%--std::istream::sentry::sentry
+               |          |          
+               |           --1.05%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+               |          
+               |--3.61%--fWrite
+               |          |          
+               |          |--2.06%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |           --1.06%--std::ostream::sentry::sentry
+               |          |          
+               |           --1.55%--std::ostream::_M_insert<long>
+               |                     |          
+               |                      --1.00%--std::ostream::sentry::sentry
+               |          
+                --1.42%--std::ostream::operator<<@plt
+
+    62.43%     1.92%  main     main                   [.] poly_multiply
+            |          
+            |--60.51%--poly_multiply
+            |          |          
+            |          |--36.88%--ntt
+            |          |          
+            |           --23.62%--ntt
+            |          
+             --1.92%--_start
+                       __libc_start_main
+                       0xffff88f3b000
+                       main
+                       poly_multiply
+
+    36.88%    36.88%  main     main                   [.] ntt
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               poly_multiply
+               ntt
+
+    29.39%     1.00%  main     libstdc++.so.6.0.28    [.] std::istream::operator>>
+            |          
+            |--28.38%--std::istream::operator>>
+            |          |          
+            |          |--16.72%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          |          |          
+            |          |          |--2.15%--0xffff893329e0
+            |          |          |          
+            |          |           --0.95%--0xffff893329d0
+            |          |          
+            |          |--10.37%--std::istream::sentry::sentry
+            |          |          
+            |           --1.05%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+            |          
+             --1.00%--_start
+                       __libc_start_main
+                       0xffff88f3b000
+                       main
+                       |          
+                        --0.94%--fRead
+                                  std::istream::operator>>
+
+    23.62%    23.62%  main     main                   [.] ntt
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               poly_multiply
+               ntt
+
+    21.28%     2.66%  main     main                   [.] fCheck
+            |          
+            |--18.62%--fCheck
+            |          |          
+            |           --18.62%--std::istream::operator>>
+            |                     |          
+            |                     |--11.93%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |                     |          |          
+            |                     |           --1.18%--0xffff893329e0
+            |                     |          
+            |                      --6.64%--std::istream::sentry::sentry
+            |          
+             --2.66%--_start
+                       __libc_start_main
+                       0xffff88f3b000
+                       main
+                       fCheck
+
+    16.72%    13.37%  main     libstdc++.so.6.0.28    [.] std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          
+            |--13.37%--_start
+            |          __libc_start_main
+            |          0xffff88f3b000
+            |          main
+            |          |          
+            |          |--10.75%--fCheck
+            |          |          std::istream::operator>>
+            |          |          std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          |          
+            |           --2.62%--fRead
+            |                     std::istream::operator>>
+            |                     std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+            |          
+             --3.35%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+                       |          
+                       |--2.15%--0xffff893329e0
+                       |          
+                        --0.95%--0xffff893329d0
+
+    10.75%     0.00%  main     main                   [.] fRead
+            |
+            ---fRead
+               std::istream::operator>>
+               |          
+               |--4.79%--std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          |          
+               |          |--0.98%--0xffff893329e0
+               |          |          
+               |           --0.95%--0xffff893329d0
+               |          
+               |--3.73%--std::istream::sentry::sentry
+               |          
+                --1.05%--std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+
+    10.37%    10.37%  main     libstdc++.so.6.0.28    [.] std::istream::sentry::sentry
+            |          
+             --10.37%--_start
+                       __libc_start_main
+                       0xffff88f3b000
+                       main
+                       |          
+                       |--6.64%--fCheck
+                       |          std::istream::operator>>
+                       |          std::istream::sentry::sentry
+                       |          
+                        --3.73%--fRead
+                                  std::istream::operator>>
+                                  std::istream::sentry::sentry
+
+     3.61%     0.00%  main     main                   [.] fWrite
+            |
+            ---fWrite
+               |          
+               |--2.06%--std::__ostream_insert<char, std::char_traits<char> >
+               |          |          
+               |           --1.06%--std::ostream::sentry::sentry
+               |          
+                --1.55%--std::ostream::_M_insert<long>
+                          |          
+                           --1.00%--std::ostream::sentry::sentry
+
+     2.15%     2.15%  main     libstdc++.so.6.0.28    [.] 0x00000000001229e0
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               |          
+               |--1.18%--fCheck
+               |          std::istream::operator>>
+               |          std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               |          0xffff893329e0
+               |          
+                --0.98%--fRead
+                          std::istream::operator>>
+                          std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+                          0xffff893329e0
+
+     2.15%     0.00%  main     libstdc++.so.6.0.28    [.] 0x0000ffff893329e0
+            |
+            ---0xffff893329e0
+
+     2.07%     2.07%  main     libstdc++.so.6.0.28    [.] std::ostream::sentry::sentry
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               |          
+                --2.06%--fWrite
+                          |          
+                          |--1.06%--std::__ostream_insert<char, std::char_traits<char> >
+                          |          std::ostream::sentry::sentry
+                          |          
+                           --1.00%--std::ostream::_M_insert<long>
+                                     std::ostream::sentry::sentry
+
+     2.06%     1.00%  main     libstdc++.so.6.0.28    [.] std::__ostream_insert<char, std::char_traits<char> >
+            |          
+            |--1.06%--std::__ostream_insert<char, std::char_traits<char> >
+            |          std::ostream::sentry::sentry
+            |          
+             --1.00%--_start
+                       __libc_start_main
+                       0xffff88f3b000
+                       main
+                       fWrite
+                       std::__ostream_insert<char, std::char_traits<char> >
+
+     1.55%     0.55%  main     libstdc++.so.6.0.28    [.] std::ostream::_M_insert<long>
+            |          
+            |--1.00%--std::ostream::_M_insert<long>
+            |          std::ostream::sentry::sentry
+            |          
+             --0.55%--_start
+                       __libc_start_main
+                       0xffff88f3b000
+                       main
+                       fWrite
+                       std::ostream::_M_insert<long>
+
+     1.42%     1.42%  main     main                   [.] std::ostream::operator<<@plt
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               std::ostream::operator<<@plt
+
+     1.05%     1.05%  main     libstdc++.so.6.0.28    [.] std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               fRead
+               std::istream::operator>>
+               std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string
+
+     0.95%     0.95%  main     libstdc++.so.6.0.28    [.] 0x00000000001229d0
+            |
+            ---_start
+               __libc_start_main
+               0xffff88f3b000
+               main
+               fRead
+               std::istream::operator>>
+               std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>
+               0xffff893329d0
+
+     0.95%     0.00%  main     libstdc++.so.6.0.28    [.] 0x0000ffff893329d0
+            |
+            ---0xffff893329d0
+
+     0.25%     0.25%  main     [unknown]              [k] 0xffffc2183d39bf80
+     0.25%     0.25%  main     main                   [.] std::istream::operator>>@plt
+     0.25%     0.00%  main     [unknown]              [.] 0xffffc2183c5a2560
+     0.25%     0.00%  main     [unknown]              [.] 0xffffc2183d39c868
+     0.24%     0.24%  main     libstdc++.so.6.0.28    [.] 0x000000000011ff74
+     0.24%     0.00%  main     libstdc++.so.6.0.28    [.] 0x0000ffff8932ff74
+     0.17%     0.17%  main     libc.so.6              [.] 0x000000000009c180
+     0.17%     0.00%  main     libc.so.6              [.] 0x0000ffff88fac180
+     0.07%     0.07%  main     libc.so.6              [.] 0x000000000009c17c
+     0.07%     0.00%  main     libc.so.6              [.] 0x0000ffff88fac17c
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x000000000000ae20
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff894240b4
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff894221fc
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8941cb14
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8941c338
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8941be20
+     0.00%     0.00%  main     libstdc++.so.6.0.28    [.] std::basic_filebuf<char, std::char_traits<char> >::underflow
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8942ddd4
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff89429e68
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8942878c
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8942b6ec
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff894143ac
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_catch_exception
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff89413e40
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8941b4ec
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x000000000000716c
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8941816c
+     0.00%     0.00%  main     libstdc++.so.6.0.28    [.] std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string@plt
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x000000000001e7dc
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8942f7dc
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff89428680
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000000000014690
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff89425690
+     0.00%     0.00%  main     libc.so.6              [.] read
+     0.00%     0.00%  main     libstdc++.so.6.0.28    [.] std::__basic_file<char>::xsgetn
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x000000000001cdc0
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8942ddc0
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x000000000001466c
+     0.00%     0.00%  main     ld-linux-aarch64.so.1  [.] 0x0000ffff8942566c
+
+
+#
+# (Tip: Show individual samples with: perf script)
+#

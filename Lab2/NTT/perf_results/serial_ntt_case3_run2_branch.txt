@@ -1,0 +1,14 @@
+# started on Mon Apr 21 16:17:58 2025
+
+
+ Performance counter stats for './main_orig 3':
+
+   <not supported>      branch-instructions:u                                       
+           542,601      branch-misses:u                                             
+
+       0.509761422 seconds time elapsed
+
+       0.476069000 seconds user
+       0.031661000 seconds sys
+
+

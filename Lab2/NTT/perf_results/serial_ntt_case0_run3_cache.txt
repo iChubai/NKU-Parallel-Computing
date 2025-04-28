@@ -1,0 +1,16 @@
+# started on Mon Apr 21 16:17:25 2025
+
+
+ Performance counter stats for './main_orig 0':
+
+       666,566,009      L1-dcache-loads:u                                           
+         3,813,099      L1-dcache-load-misses:u   #    0.57% of all L1-dcache accesses
+         4,573,716      LLC-loads:u                                                 
+            16,073      LLC-load-misses:u         #    0.35% of all LL-cache accesses
+
+       0.514811402 seconds time elapsed
+
+       0.458439000 seconds user
+       0.051442000 seconds sys
+
+
