@@ -1,0 +1,165 @@
+# main_pthread_v1:
+thread == 1 :
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 1.14809 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 441.723 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 444.454 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 430.337 (us) 
+thread == 2 :
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 1.11423 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 262.361 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 260.528 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 262.155 (us) 
+thread == 3:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 1.22019 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 210.297 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 232.835 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 205.066 (us) 
+thread == 4:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 1.52522 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 169.741 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 170.921 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 169.631 (us) 
+thread == 8:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 3.03215 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 124.829 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 122.757 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 126.58 (us) 
+thread == 16:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 5.68622 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 119.306 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 117.896 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 123.195 (us) 
+# main_pthread_v2:
+thread == 1 :
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.338087 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 177.339 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 160.093 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 191.006 (us) 
+thread == 2 :
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.305287 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 184.039 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 126.154 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 138.714 (us) 
+thread == 3:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.45324 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 173.18 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 125.666 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 149.077 (us) 
+thread == 4:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.48732 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 114.159 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 118.776 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 123.685 (us) 
+thread == 8:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.929653 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 120.11 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 111.225 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 103.549 (us)
+thread == 16:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 1.37655 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 102.642 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 96.5295 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 90.5392 (us) 
+# main_pthread_v3:
+thread == 1 :
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.34111 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 207.166 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 180.6 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 186.195 (us) 
+thread == 2 :
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.44275 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 208.719 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 215.832 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 141.917 (us) 
+thread == 3:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.547407 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 162.296 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 168.886 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 117.758 (us) 
+thread == 4:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 0.534685 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 122.557 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 159.792 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 140.584 (us) 
+thread == 8:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 1.05099 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 112.577 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 100.167 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 108.788 (us) 
+thread == 16:
+多项式乘法结果正确
+average latency for n = 4 p = 7340033 : 1.77188 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 7340033 : 115.053 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 104857601 : 105.634 (us) 
+多项式乘法结果正确
+average latency for n = 131072 p = 469762049 : 106.924 (us) 

@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage[UTF8]{ctex}
+
+\title{采用 Pthreads 实现的并行矩阵乘法优化}
+\author{AI Assistant}
+\date{\today}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C++,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstset{escapechar=@,style=customc}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+本文主要探讨了一种针对矩阵乘法 ($C = A \times B$) 的并行优化技术，该技术利用 POSIX 线程 (pthreads) 实现显式的线程级并行。我们旨在提供一种对底层线程行为具有直接控制的优化方案，以有效利用多核处理器的计算能力。本文将详细阐述其原理、实现策略、以及通过 pthreads 进行任务划分和管理的关键方面，并辅以代码片段解释。最后，简要讨论了数据级并行 (SIMD) 作为进一步优化的可能性。
+\end{abstract}
+
+\section{引言}
+矩阵乘法是众多科学计算、工程分析和机器学习应用的核心。其标准定义为 $C_{ij} = \sum_{k=0}^{M-1} A_{ik} B_{kj}$，其中 A 是 $N \times M$ 矩阵，B 是 $M \times P$ 矩阵，C 是 $N \times P$ 矩阵。对于大规模矩阵，其 $O(NMP)$ 的计算复杂度使得高效优化成为必然要求。本文聚焦于通过 POSIX 线程 (pthreads) 实现线程级并行，以加速矩阵乘法运算。
+
+\section{核心优化策略: Pthreads 实现线程级并行}
+本策略的核心思想是使用 POSIX 线程库手动创建和管理一组工作线程，将计算结果矩阵 C 的不同行（或行的块）分配给这些线程并行处理。这种方法提供了对线程创建、同步和负载均衡的直接控制。
+
+\section{实现细节}
+
+\subsection{Pthreads 线程管理}
+\begin{enumerate}
+    \item \textbf{线程参数传递}: 定义一个结构体（例如 `pthread_matmul_args_t`）来封装传递给每个线程所需的所有信息。这通常包括指向输入矩阵 A、B 和输出矩阵 C 的指针（或其 `std::vector` 的数据指针）、矩阵维度（N, M, P），以及该线程负责计算的 C 矩阵的起始行索引和结束行索引。
+    \begin{lstlisting}[caption={线程参数结构体定义}]
+struct pthread_matmul_args_t {
+    const std::vector<double>* A_vec;
+    const std::vector<double>* B_vec;
+    std::vector<double>* C_vec;
+    int N, M, P;
+    int start_row;
+    int end_row;
+}; // (实际代码中使用了指针，这里为概念说明)
+    \end{lstlisting}
+
+    \item \textbf{线程工作函数}: 每个 pthread 执行一个指定的工作函数（例如 `thread_worker_matmul`）。此函数接收指向上述参数结构体的指针，并根据其中的信息执行分配给它的那部分矩阵乘法计算。在当前成功运行的版本中，此函数内部执行的是标准的标量矩阵乘法逻辑 ($C_{ij} += A_{ik} B_{kj}$) 来计算其负责的行。
+    \begin{lstlisting}[caption={线程工作函数骨架 (标量核心)}]
+void* thread_worker_matmul(void* args_ptr) {
+    pthread_matmul_args_t* args = (pthread_matmul_args_t*)args_ptr;
+    // 获取矩阵数据指针和维度
+    const double* A_ptr = args->A_vec->data();
+    // ... (类似地获取 B_ptr, C_ptr, M, P)
+
+    for (int i = args->start_row; i < args->end_row; ++i) {
+        for (int k = 0; k < args->M; ++k) {
+            double a_ik = A_ptr[i * args->M + k];
+            for (int j = 0; j < args->P; ++j) {
+                // C_ptr[i * args->P + j] += a_ik * B_ptr[k * args->P + j];
+            }
+        }
+    }
+    pthread_exit(NULL);
+}
+    \end{lstlisting}
+
+    \item \textbf{线程创建与任务分配}: 主线程（例如在 `matmul_other` 函数中）负责：
+    \begin{itemize}
+        \item 确定要创建的线程数量。一个常见的选择是使用 `std::thread::hardware_concurrency()` 来获取硬件支持的并发线程数，但也可能因策略而选择固定数量。
+        \item 将 C 矩阵的总行数 N 平均（或尽可能平均地）分配给这些线程。例如，计算每个线程负责的 `rows_per_thread`，并处理余数，确保所有行都被覆盖且不重叠。
+        \item 为每个线程准备其参数结构体实例。
+        \item 使用 `pthread_create()` 循环创建线程，每个线程执行上述的工作函数并传入其特定的参数。
+    \end{itemize}
+
+    \item \textbf{线程同步 (Join)}: 在所有工作线程被创建并开始执行后，主线程必须使用 `pthread_join()` 等待每个线程完成其计算任务。`pthread_join()` 会阻塞主线程，直到指定的子线程终止。这是确保所有计算完成并将结果正确写入 C 矩阵的关键步骤。
+    \begin{lstlisting}[caption={主线程中创建与等待 pthreads (概念)}]
+// unsigned int num_threads = std::thread::hardware_concurrency();
+// std::vector<pthread_t> threads(num_threads);
+// std::vector<pthread_matmul_args_t> thread_args(num_threads);
+// int rows_per_thread = N / num_threads;
+// int current_row = 0;
+// for (unsigned int t = 0; t < num_threads; ++t) {
+//     args.start_row = current_row;
+//     args.end_row = current_row + rows_per_thread; // Plus remainder handling
+//     // ... (设置 args 的其他字段 A, B, C, N, M, P)
+//     pthread_create(&threads[t], NULL, thread_worker_matmul, &thread_args[t]);
+//     current_row = args.end_row;
+// }
+// for (unsigned int t = 0; t < num_threads; ++t) {
+//     pthread_join(threads[t], NULL);
+// }
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{编译与执行}
+\begin{itemize}
+    \item \textbf{编译器标志}: 使用 pthreads 需要在编译链接时指定 `-pthread` 选项 (例如，对于 GCC/Clang)。
+    \item \textbf{性能}: 这种基于 pthreads 的线程级并行通常能显著提高计算密集型任务（如大规模矩阵乘法）在多核处理器上的性能，因为它允许多个核心同时参与计算的不同部分。
+\end{itemize}
+
+\section{进一步优化的可能性: 数据级并行 (SIMD)}
+虽然上述 pthreads 实现有效地利用了线程级并行，但在每个线程内部，计算仍然是标量操作。为了进一步挖掘 CPU 的性能，可以考虑数据级并行 (SIMD)。
+
+SIMD 允许 CPU 的单个指令同时对多个数据元素（形成一个向量）执行相同的操作。例如，现代 CPU 通常包含 128位、256位甚至 512位的向量寄存器，可以同时处理多个浮点数或整数。
+
+实现 SIMD 优化有几种途径：
+\begin{enumerate}
+    \item \textbf{编译器自动向量化}: 现代编译器在启用优化选项（如 `-O2`, `-O3`, `-march=native`）时，会尝试自动识别代码中适合向量化的循环，并生成 SIMD 指令。这是最简单的方法，但效果依赖于编译器的能力和代码的编写方式。
+    \item \textbf{编译器指导的向量化 (如 OpenMP SIMD)}: 可以使用像 OpenMP 提供的 `\#pragma omp simd` 这样的指令来明确告诉编译器某个循环适合向量化，并可以提供一些子句来指导向量化过程。
+    \item \textbf{手动 SIMD 内建函数 (Intrinsics)}: 这是最底层也是最复杂的方法，开发者直接使用特定于 CPU 架构的内建函数（例如 Intel SSE/AVX/AVX-512 或 ARM NEON 的内建函数）。这提供了对 SIMD 操作的完全控制，但牺牲了可移植性且开发难度高。例如，可以使用 `_mm256_loadu_pd` 加载数据到256位 AVX 寄存器，使用 `_mm256_mul_pd` 和 `_mm256_add_pd` 进行向量化的乘法和加法，然后用 `_mm256_storeu_pd` 写回结果。这种方法需要包含相应的头文件（如 `<immintrin.h>` for AVX）并使用特定的编译器标志（如 `-mavx`）。
+\end{enumerate}
+在本次实验的早期阶段，曾尝试手动实现 AVX SIMD 内建函数，但由于编译环境未能正确识别相关编译器标志或找到必要的头文件，最终采用了纯 pthreads 的标量计算版本进行测试。然而，将 SIMD 技术（无论是自动的、指导的还是手动的）应用于 `thread_worker_matmul` 函数中的内层循环，是进一步提升每个线程计算效率的自然方向。
+
+\section{结论}
+通过 POSIX 线程 (pthreads) 实现线程级并行是一种有效的手动控制并行计算的方法，能够显著加速如矩阵乘法这类计算密集型任务在多核处理器上的执行。本文详细介绍了基于 pthreads 的矩阵乘法实现策略，包括线程参数传递、工作函数设计、任务划分和线程同步。实验结果表明，即使线程内部采用标量计算，pthreads 并行化也带来了显著的性能提升。进一步结合 SIMD 技术进行数据级并行，有望获得更高的性能，但这依赖于编译环境的支持和可能的更复杂的代码实现。
+
+\end{document} 

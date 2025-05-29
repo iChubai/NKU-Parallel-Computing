@@ -1,0 +1,92 @@
+]633;E;echo "===== OS & 发行版 =====";d4f8f96e-ce03-4b38-91e8-688c1c3f59d4]633;C===== OS & 发行版 =====
+NAME="openEuler"
+VERSION="22.03 (LTS-SP4)"
+ID="openEuler"
+VERSION_ID="22.03"
+PRETTY_NAME="openEuler 22.03 (LTS-SP4)"
+ANSI_COLOR="0;31"
+
+
+===== Kernel & 主机名 =====
+Linux 5.10.0-235.0.0.134.oe2203sp4.aarch64 aarch64 GNU/Linux
+ Static hostname: master_ubss1
+
+===== CPU =====
+Architecture:                       aarch64
+CPU op-mode(s):                     64-bit
+Byte Order:                         Little Endian
+CPU(s):                             8
+On-line CPU(s) list:                0-7
+Vendor ID:                          HiSilicon
+Model name:                         Kunpeng-920
+Model:                              0
+Thread(s) per core:                 1
+Core(s) per cluster:                8
+Socket(s):                          -
+Cluster(s):                         1
+Stepping:                           0x1
+BogoMIPS:                           200.00
+Flags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+NUMA node(s):                       1
+NUMA node0 CPU(s):                  0-7
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Not affected
+Vulnerability Spectre v1:           Mitigation; __user pointer sanitization
+Vulnerability Spectre v2:           Not affected
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
+
+===== 内存 =====
+               total        used        free      shared  buff/cache   available
+Mem:            47Gi        23Gi       1.8Gi       2.1Gi        25Gi        24Gi
+Swap:          5.9Gi       120Mi       5.8Gi
+
+===== 磁盘 =====
+Filesystem                  Size  Used Avail Use% Mounted on
+devtmpfs                    4.0M     0  4.0M   0% /dev
+tmpfs                        24G     0   24G   0% /dev/shm
+tmpfs                       9.6G  313M  9.3G   4% /run
+tmpfs                       4.0M     0  4.0M   0% /sys/fs/cgroup
+/dev/mapper/openeuler-root   69G  8.1G   57G  13% /
+tmpfs                        24G  1.9G   22G   8% /tmp
+/dev/sda2                   974M  195M  713M  22% /boot
+/dev/sdb                   1007G  202G  755G  22% /home
+/dev/sda1                   599M  6.5M  593M   2% /boot/efi
+
+===== 块设备 =====
+NAME               MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda                  8:0    0   256G  0 disk 
+├─sda1               8:1    0   600M  0 part /boot/efi
+├─sda2               8:2    0     1G  0 part /boot
+└─sda3               8:3    0 254.4G  0 part 
+  ├─openeuler-root 253:0    0    70G  0 lvm  /
+  ├─openeuler-swap 253:1    0   5.9G  0 lvm  [SWAP]
+  └─openeuler-home 253:2    0 178.5G  0 lvm  
+sdb                  8:16   0     1T  0 disk /home
+sr0                 11:0    1  1024M  0 rom  
+
+===== PCI 设备 =====
+00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge
+00:01.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+01:00.0 Ethernet controller: Virtio: Virtio network device (rev 01)
+02:00.0 USB controller: Red Hat, Inc. QEMU XHCI Host Controller (rev 01)
+03:00.0 SCSI storage controller: Virtio: Virtio SCSI (rev 01)
+04:00.0 Communication controller: Virtio: Virtio console (rev 01)
+05:00.0 Unclassified device [00ff]: Virtio: Virtio RNG (rev 01)
+
+===== USB 设备 =====
+
+===== GPU（若有 NVIDIA） =====
+未检测到 NVIDIA GPU 或 nvidia-smi
